@@ -1,0 +1,3 @@
+/home/preet/IIIT/2-2/Graphics/Assignments/2/3D-fighter-plane/CMakeFiles/edit_cache.dir
+/home/preet/IIIT/2-2/Graphics/Assignments/2/3D-fighter-plane/CMakeFiles/fighter-plane.dir
+/home/preet/IIIT/2-2/Graphics/Assignments/2/3D-fighter-plane/CMakeFiles/rebuild_cache.dir
