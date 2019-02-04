@@ -44,7 +44,7 @@ Fish::Fish(float x, float y, float z) {
         5.0f,-5.0f, 5.0f
     };
 
-    color_t c = {255, 0, 0};
+    color_t c = {25, 0, 230};
     
     this->object = create3DObject(GL_TRIANGLES, 36, vertex_buffer_data, c, GL_FILL);
 }

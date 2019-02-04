@@ -40,6 +40,16 @@ fish.h
 main.h
 /home/preet/IIIT/2-2/Graphics/Assignments/2/3D-fighter-plane/src/main.h
 
+/home/preet/IIIT/2-2/Graphics/Assignments/2/3D-fighter-plane/src/fuel.cpp
+main.h
+/home/preet/IIIT/2-2/Graphics/Assignments/2/3D-fighter-plane/src/main.h
+fuel.h
+/home/preet/IIIT/2-2/Graphics/Assignments/2/3D-fighter-plane/src/fuel.h
+
+/home/preet/IIIT/2-2/Graphics/Assignments/2/3D-fighter-plane/src/fuel.h
+main.h
+/home/preet/IIIT/2-2/Graphics/Assignments/2/3D-fighter-plane/src/main.h
+
 /home/preet/IIIT/2-2/Graphics/Assignments/2/3D-fighter-plane/src/ground.cpp
 main.h
 /home/preet/IIIT/2-2/Graphics/Assignments/2/3D-fighter-plane/src/main.h
@@ -89,7 +99,13 @@ dashboard.h
 /home/preet/IIIT/2-2/Graphics/Assignments/2/3D-fighter-plane/src/dashboard.h
 needle.h
 /home/preet/IIIT/2-2/Graphics/Assignments/2/3D-fighter-plane/src/needle.h
+ring.h
+/home/preet/IIIT/2-2/Graphics/Assignments/2/3D-fighter-plane/src/ring.h
+fuel.h
+/home/preet/IIIT/2-2/Graphics/Assignments/2/3D-fighter-plane/src/fuel.h
 algorithm
+-
+list
 -
 
 /home/preet/IIIT/2-2/Graphics/Assignments/2/3D-fighter-plane/src/main.h
@@ -173,6 +189,16 @@ main.h
 /home/preet/IIIT/2-2/Graphics/Assignments/2/3D-fighter-plane/src/main.h
 
 /home/preet/IIIT/2-2/Graphics/Assignments/2/3D-fighter-plane/src/plane.h
+main.h
+/home/preet/IIIT/2-2/Graphics/Assignments/2/3D-fighter-plane/src/main.h
+
+/home/preet/IIIT/2-2/Graphics/Assignments/2/3D-fighter-plane/src/ring.cpp
+main.h
+/home/preet/IIIT/2-2/Graphics/Assignments/2/3D-fighter-plane/src/main.h
+ring.h
+/home/preet/IIIT/2-2/Graphics/Assignments/2/3D-fighter-plane/src/ring.h
+
+/home/preet/IIIT/2-2/Graphics/Assignments/2/3D-fighter-plane/src/ring.h
 main.h
 /home/preet/IIIT/2-2/Graphics/Assignments/2/3D-fighter-plane/src/main.h
 

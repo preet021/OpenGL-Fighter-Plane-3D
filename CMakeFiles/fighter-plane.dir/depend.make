@@ -16,6 +16,10 @@ CMakeFiles/fighter-plane.dir/src/fish.cpp.o: src/fish.cpp
 CMakeFiles/fighter-plane.dir/src/fish.cpp.o: src/fish.h
 CMakeFiles/fighter-plane.dir/src/fish.cpp.o: src/main.h
 
+CMakeFiles/fighter-plane.dir/src/fuel.cpp.o: src/fuel.cpp
+CMakeFiles/fighter-plane.dir/src/fuel.cpp.o: src/fuel.h
+CMakeFiles/fighter-plane.dir/src/fuel.cpp.o: src/main.h
+
 CMakeFiles/fighter-plane.dir/src/ground.cpp.o: src/ground.cpp
 CMakeFiles/fighter-plane.dir/src/ground.cpp.o: src/ground.h
 CMakeFiles/fighter-plane.dir/src/ground.cpp.o: src/main.h
@@ -26,11 +30,13 @@ CMakeFiles/fighter-plane.dir/src/input.cpp.o: src/main.h
 CMakeFiles/fighter-plane.dir/src/main.cpp.o: src/dashboard.h
 CMakeFiles/fighter-plane.dir/src/main.cpp.o: src/fan.h
 CMakeFiles/fighter-plane.dir/src/main.cpp.o: src/fish.h
+CMakeFiles/fighter-plane.dir/src/main.cpp.o: src/fuel.h
 CMakeFiles/fighter-plane.dir/src/main.cpp.o: src/ground.h
 CMakeFiles/fighter-plane.dir/src/main.cpp.o: src/main.cpp
 CMakeFiles/fighter-plane.dir/src/main.cpp.o: src/main.h
 CMakeFiles/fighter-plane.dir/src/main.cpp.o: src/needle.h
 CMakeFiles/fighter-plane.dir/src/main.cpp.o: src/plane.h
+CMakeFiles/fighter-plane.dir/src/main.cpp.o: src/ring.h
 CMakeFiles/fighter-plane.dir/src/main.cpp.o: src/timer.h
 
 CMakeFiles/fighter-plane.dir/src/needle.cpp.o: src/main.h
@@ -46,6 +52,10 @@ CMakeFiles/fighter-plane.dir/src/other_handlers.cpp.o: src/other_handlers.cpp
 CMakeFiles/fighter-plane.dir/src/plane.cpp.o: src/main.h
 CMakeFiles/fighter-plane.dir/src/plane.cpp.o: src/plane.cpp
 CMakeFiles/fighter-plane.dir/src/plane.cpp.o: src/plane.h
+
+CMakeFiles/fighter-plane.dir/src/ring.cpp.o: src/main.h
+CMakeFiles/fighter-plane.dir/src/ring.cpp.o: src/ring.cpp
+CMakeFiles/fighter-plane.dir/src/ring.cpp.o: src/ring.h
 
 CMakeFiles/fighter-plane.dir/src/timer.cpp.o: src/timer.cpp
 CMakeFiles/fighter-plane.dir/src/timer.cpp.o: src/timer.h

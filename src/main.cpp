@@ -6,7 +6,12 @@
 #include "fan.h"
 #include "dashboard.h"
 #include "needle.h"
+#include "ring.h"
+
+
+#include "fuel.h"
 #include <algorithm>
+#include <list>
 
 #define INF 100000
 #define NO_OF_FISHES 100
@@ -26,12 +31,20 @@ Plane plane;
 Ground ground;
 Fish fishes[NO_OF_FISHES];
 Dashboard db;
+list <Ring> rings;
+list <Fuel> ftanks;
 
 float screen_zoom = 1, screen_center_x = 0, screen_center_y = 0;
-float camera_rotation_angle = 0, ea, eb, ec, ta, tb, tc, ua, ub, uc;
-bool plane_view = 0, follow_cam_view = 1, top_view = 0, heli_cam_view = 0, tower_view = 0;
+float camera_rotation_angle = 0, ea, eb, ec, ta, tb, tc, ua, ub, uc, curX = 0, curY = 0, heli_cam_view_radius = 100, heli_cam_view_elevation = 0, heli_cam_view_rotation = 0;
+bool plane_view = 0, follow_cam_view = 1, top_view = 0, heli_cam_view = 0, tower_view = 0, heli_cam_init;
+int cnt = 0;
+GLFWcursor *cursor = glfwCreateStandardCursor(GLFW_HRESIZE_CURSOR);
+
+void detect_collisions();
 
 Timer t60(1.0 / 60);
+
+static void CursorPositionCallback (GLFWwindow *window, double xPos, double yPos);
 
 /* Render the scene with openGL */
 /* Edit this function according to your assignment */
@@ -81,6 +94,12 @@ void draw() {
     needle[0].draw(VP1);
     needle[1].draw(VP1);
     needle[2].draw(VP1);
+    for (list<Ring>::iterator it=rings.begin(); it!=rings.end(); it++) {
+        it->draw(VP);
+    }
+    for (list<Fuel>::iterator it=ftanks.begin(); it!=ftanks.end(); it++) {
+        it->draw(VP);
+    }
 }
 
 void tick_input(GLFWwindow *window) {
@@ -192,10 +211,6 @@ void tick_input(GLFWwindow *window) {
         tc = plane.position.z;
     }
 
-    if (heli_cam_view) {
-
-    }
-
     if (tower_view) {
         ea = 100;
         eb = 100;
@@ -203,6 +218,15 @@ void tick_input(GLFWwindow *window) {
         ta = plane.position.x;
         tb = plane.position.y;
         tc = plane.position.z;
+    }
+
+    if (heli_cam_view) {
+        ta = plane.position.x;
+        tb = plane.position.y;
+        tc = plane.position.z;
+        ea = plane.position.x + cos(heli_cam_view_elevation * M_PI / 180.0) * heli_cam_view_radius * sin((plane.rotation.y + heli_cam_view_rotation) * M_PI/180.0);
+        eb = plane.position.y + heli_cam_view_radius * sin(heli_cam_view_elevation * M_PI / 180.0);
+        ec = plane.position.z + cos(heli_cam_view_elevation * M_PI / 180.0) * heli_cam_view_radius * cos((plane.rotation.y + heli_cam_view_rotation) * M_PI/180.0);
     }
 
 }
@@ -230,17 +254,34 @@ void initGL(GLFWwindow *window, int width, int height) {
 
     color_t r = {255, 0, 0}, g = {0, 255, 0}, b = {0, 0, 255};    
 
-    plane = Plane(0, 80, 0);
+    plane = Plane(0, 180, 0);
+    
     ground = Ground(0, 0, 0);
+    
     for (int i=0; i<NO_OF_FISHES; ++i) {
-        fishes[i] = Fish(-250 + rand() % 500, -ground.deep, -250 + rand() % 500);
+        fishes[i] = Fish(-250 + rand() % 500, -ground.deep, -(rand() % 1000));
     }
+    
     fan = Fan(0, 0, 0);
+    
     db = Dashboard(-12, -6.9, 0);
+    
     needle[0] = Needle(0, -11, 0, r);
     needle[1] = Needle(-8, -11, 0, g);
     needle[2] = Needle(8, -11, 0, b);
     needle[2].rotation = -90;
+
+    rings.assign(10, Ring(0, 0, 0));
+
+    for (list<Ring>::iterator it=rings.begin(); it!=rings.end(); it++) {
+        *it = Ring(-250 + rand() % 500, 50 + rand() % 100, -(rand() % 1000));
+    }
+
+    ftanks.assign(5, Fuel(0, 0, 0));
+
+    for (list<Fuel>::iterator it=ftanks.begin(); it!=ftanks.end(); it++) {
+        *it = Fuel(-250 + rand() % 500, 50 + rand() % 100, -(rand() % 1000));
+    }
 
     // Create and compile our GLSL program from the shaders
     programID = LoadShaders("Sample_GL.vert", "Sample_GL.frag");
@@ -270,6 +311,7 @@ int main(int argc, char **argv) {
     int height = 600;
 
     window = initGLFW(width, height);
+    glfwSetCursorPosCallback(window, CursorPositionCallback);
 
     initGL (window, width, height);
 
@@ -283,6 +325,8 @@ int main(int argc, char **argv) {
             draw();
             // Swap Frame Buffer in double buffering
             glfwSwapBuffers(window);
+            reset_screen();
+            detect_collisions();
             tick_elements();
             tick_input(window);
         }
@@ -294,9 +338,42 @@ int main(int argc, char **argv) {
     quit(window);
 }
 
-bool detect_collision(bounding_box_t a, bounding_box_t b) {
-    return (abs(a.x - b.x) * 2 < (a.width + b.width)) &&
-           (abs(a.y - b.y) * 2 < (a.height + b.height));
+void detect_collisions() {
+
+    // plane and smoke ring
+    list<Ring>::iterator cur;
+    for (list<Ring>::iterator it=rings.begin(); it!=rings.end();) {
+        cur = it;
+        it++;
+        float plx = plane.position.x, ply = plane.position.y, plz = plane.position.z;
+        float rgx = cur->position.x, rgy = cur->position.y, rgz = cur->position.z, radius = cur->radius;
+        bool x, y, z;
+        x = y = z = 0;
+        if (plx >= rgx - radius && plx <= rgx + radius) x = 1;
+        if (ply >= rgy - radius && ply <= rgy + radius) y = 1;
+        if (plz >= rgz - 0.7*plane.rlength && plz <= rgz + 0.7*plane.rlength) z = 1;
+        if (x && y && z) {
+            rings.erase(cur);
+        }
+    }
+
+    // plane and smoke fuel tank
+    list<Fuel>::iterator curr;
+    for (list<Fuel>::iterator it=ftanks.begin(); it!=ftanks.end();) {
+        curr = it;
+        it++;
+        float plx = plane.position.x, ply = plane.position.y, plz = plane.position.z;
+        float ftx = curr->position.x, fty = curr->position.y, ftz = curr->position.z, radius = curr->side;
+        bool x, y, z;
+        x = y = z = 0;
+        if (plx >= ftx - radius && plx <= ftx + radius) x = 1;
+        if (ply >= fty - radius && ply <= fty + radius) y = 1;
+        if (plz >= ftz - plane.rlength && plz <= ftz + plane.rlength) z = 1;
+        if (x && y && z) {
+            ftanks.erase(curr);
+            plane.fuel = plane.maxfuel;
+        }
+    }
 }
 
 void reset_screen() {
@@ -305,4 +382,23 @@ void reset_screen() {
     float left   = screen_center_x - 40 / screen_zoom;
     float right  = screen_center_x + 40 / screen_zoom;
     Matrices.projection = glm::perspective(100*M_PI/180, (double)1 , (double)0.1, (double)INF);
+}
+
+static void CursorPositionCallback (GLFWwindow *window, double xPos, double yPos) {
+    if (!heli_cam_view) return;
+    if (xPos - 512 > 0) {
+        heli_cam_view_rotation -= 0.5;
+    }
+    else {
+        heli_cam_view_rotation += 0.5;
+    }
+    if (yPos - 384 > 0) {
+        heli_cam_view_elevation += 0.5;
+        if (heli_cam_view_elevation > 90) heli_cam_view_elevation = 90;
+    }
+    else {
+        heli_cam_view_elevation -= 0.5;
+        if (heli_cam_view_elevation < -90) heli_cam_view_elevation = -90;
+    }
+    glfwSetCursorPos(window, 512, 384);
 }

@@ -16,6 +16,10 @@ CMakeFiles/fighter-plane.dir/src/fish.cpp.o
  /home/preet/IIIT/2-2/Graphics/Assignments/2/3D-fighter-plane/src/fish.cpp
  /home/preet/IIIT/2-2/Graphics/Assignments/2/3D-fighter-plane/src/fish.h
  /home/preet/IIIT/2-2/Graphics/Assignments/2/3D-fighter-plane/src/main.h
+CMakeFiles/fighter-plane.dir/src/fuel.cpp.o
+ /home/preet/IIIT/2-2/Graphics/Assignments/2/3D-fighter-plane/src/fuel.cpp
+ /home/preet/IIIT/2-2/Graphics/Assignments/2/3D-fighter-plane/src/fuel.h
+ /home/preet/IIIT/2-2/Graphics/Assignments/2/3D-fighter-plane/src/main.h
 CMakeFiles/fighter-plane.dir/src/ground.cpp.o
  /home/preet/IIIT/2-2/Graphics/Assignments/2/3D-fighter-plane/src/ground.cpp
  /home/preet/IIIT/2-2/Graphics/Assignments/2/3D-fighter-plane/src/ground.h
@@ -27,11 +31,13 @@ CMakeFiles/fighter-plane.dir/src/main.cpp.o
  /home/preet/IIIT/2-2/Graphics/Assignments/2/3D-fighter-plane/src/dashboard.h
  /home/preet/IIIT/2-2/Graphics/Assignments/2/3D-fighter-plane/src/fan.h
  /home/preet/IIIT/2-2/Graphics/Assignments/2/3D-fighter-plane/src/fish.h
+ /home/preet/IIIT/2-2/Graphics/Assignments/2/3D-fighter-plane/src/fuel.h
  /home/preet/IIIT/2-2/Graphics/Assignments/2/3D-fighter-plane/src/ground.h
  /home/preet/IIIT/2-2/Graphics/Assignments/2/3D-fighter-plane/src/main.cpp
  /home/preet/IIIT/2-2/Graphics/Assignments/2/3D-fighter-plane/src/main.h
  /home/preet/IIIT/2-2/Graphics/Assignments/2/3D-fighter-plane/src/needle.h
  /home/preet/IIIT/2-2/Graphics/Assignments/2/3D-fighter-plane/src/plane.h
+ /home/preet/IIIT/2-2/Graphics/Assignments/2/3D-fighter-plane/src/ring.h
  /home/preet/IIIT/2-2/Graphics/Assignments/2/3D-fighter-plane/src/timer.h
 CMakeFiles/fighter-plane.dir/src/needle.cpp.o
  /home/preet/IIIT/2-2/Graphics/Assignments/2/3D-fighter-plane/src/main.h
@@ -47,6 +53,10 @@ CMakeFiles/fighter-plane.dir/src/plane.cpp.o
  /home/preet/IIIT/2-2/Graphics/Assignments/2/3D-fighter-plane/src/main.h
  /home/preet/IIIT/2-2/Graphics/Assignments/2/3D-fighter-plane/src/plane.cpp
  /home/preet/IIIT/2-2/Graphics/Assignments/2/3D-fighter-plane/src/plane.h
+CMakeFiles/fighter-plane.dir/src/ring.cpp.o
+ /home/preet/IIIT/2-2/Graphics/Assignments/2/3D-fighter-plane/src/main.h
+ /home/preet/IIIT/2-2/Graphics/Assignments/2/3D-fighter-plane/src/ring.cpp
+ /home/preet/IIIT/2-2/Graphics/Assignments/2/3D-fighter-plane/src/ring.h
 CMakeFiles/fighter-plane.dir/src/timer.cpp.o
  /home/preet/IIIT/2-2/Graphics/Assignments/2/3D-fighter-plane/src/timer.cpp
  /home/preet/IIIT/2-2/Graphics/Assignments/2/3D-fighter-plane/src/timer.h
