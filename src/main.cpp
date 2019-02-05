@@ -8,7 +8,7 @@
 #include "needle.h"
 #include "ring.h"
 
-
+#include "volcano.h"
 #include "fuel.h"
 #include <algorithm>
 #include <list>
@@ -33,6 +33,7 @@ Fish fishes[NO_OF_FISHES];
 Dashboard db;
 list <Ring> rings;
 list <Fuel> ftanks;
+list <Volcano> volc;
 
 float screen_zoom = 1, screen_center_x = 0, screen_center_y = 0;
 float camera_rotation_angle = 0, ea, eb, ec, ta, tb, tc, ua, ub, uc, curX = 0, curY = 0, heli_cam_view_radius = 100, heli_cam_view_elevation = 0, heli_cam_view_rotation = 0;
@@ -98,6 +99,9 @@ void draw() {
         it->draw(VP);
     }
     for (list<Fuel>::iterator it=ftanks.begin(); it!=ftanks.end(); it++) {
+        it->draw(VP);
+    }
+    for (list<Volcano>::iterator it=volc.begin(); it!=volc.end(); it++) {
         it->draw(VP);
     }
 }
@@ -283,6 +287,12 @@ void initGL(GLFWwindow *window, int width, int height) {
         *it = Fuel(-250 + rand() % 500, 50 + rand() % 100, -(rand() % 1000));
     }
 
+    volc.assign(5, Volcano(0, 0, 0));
+
+    for (list<Volcano>::iterator it=volc.begin(); it!=volc.end(); it++) {
+        *it = Volcano(-500 + rand() % 1000, 0, -(rand() % 1000));
+    }
+
     // Create and compile our GLSL program from the shaders
     programID = LoadShaders("Sample_GL.vert", "Sample_GL.frag");
     // Get a handle for our "MVP" uniform
@@ -372,6 +382,18 @@ void detect_collisions() {
         if (x && y && z) {
             ftanks.erase(curr);
             plane.fuel = plane.maxfuel;
+        }
+    }
+
+    // no flying zone (volcano)
+    list<Volcano>::iterator curv;
+    for (list<Volcano>::iterator it=volc.begin(); it!=volc.end();) {
+        curv = it;
+        it++;
+        float plx = plane.position.x, plz = plane.position.z;
+        float vlx = curv->position.x, vlz = curv->position.z, side=curv->side;
+        if (plx >= vlx - side && plx <= vlx + side && plz >= vlz - side && plz <= vlz + side) {
+            cout << cnt << " game ended" << endl;++cnt;
         }
     }
 }

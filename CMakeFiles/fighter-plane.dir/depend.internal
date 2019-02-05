@@ -39,6 +39,7 @@ CMakeFiles/fighter-plane.dir/src/main.cpp.o
  /home/preet/IIIT/2-2/Graphics/Assignments/2/3D-fighter-plane/src/plane.h
  /home/preet/IIIT/2-2/Graphics/Assignments/2/3D-fighter-plane/src/ring.h
  /home/preet/IIIT/2-2/Graphics/Assignments/2/3D-fighter-plane/src/timer.h
+ /home/preet/IIIT/2-2/Graphics/Assignments/2/3D-fighter-plane/src/volcano.h
 CMakeFiles/fighter-plane.dir/src/needle.cpp.o
  /home/preet/IIIT/2-2/Graphics/Assignments/2/3D-fighter-plane/src/main.h
  /home/preet/IIIT/2-2/Graphics/Assignments/2/3D-fighter-plane/src/needle.cpp
@@ -60,3 +61,7 @@ CMakeFiles/fighter-plane.dir/src/ring.cpp.o
 CMakeFiles/fighter-plane.dir/src/timer.cpp.o
  /home/preet/IIIT/2-2/Graphics/Assignments/2/3D-fighter-plane/src/timer.cpp
  /home/preet/IIIT/2-2/Graphics/Assignments/2/3D-fighter-plane/src/timer.h
+CMakeFiles/fighter-plane.dir/src/volcano.cpp.o
+ /home/preet/IIIT/2-2/Graphics/Assignments/2/3D-fighter-plane/src/main.h
+ /home/preet/IIIT/2-2/Graphics/Assignments/2/3D-fighter-plane/src/volcano.cpp
+ /home/preet/IIIT/2-2/Graphics/Assignments/2/3D-fighter-plane/src/volcano.h

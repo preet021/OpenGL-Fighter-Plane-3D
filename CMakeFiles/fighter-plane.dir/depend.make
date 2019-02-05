@@ -38,6 +38,7 @@ CMakeFiles/fighter-plane.dir/src/main.cpp.o: src/needle.h
 CMakeFiles/fighter-plane.dir/src/main.cpp.o: src/plane.h
 CMakeFiles/fighter-plane.dir/src/main.cpp.o: src/ring.h
 CMakeFiles/fighter-plane.dir/src/main.cpp.o: src/timer.h
+CMakeFiles/fighter-plane.dir/src/main.cpp.o: src/volcano.h
 
 CMakeFiles/fighter-plane.dir/src/needle.cpp.o: src/main.h
 CMakeFiles/fighter-plane.dir/src/needle.cpp.o: src/needle.cpp
@@ -59,4 +60,8 @@ CMakeFiles/fighter-plane.dir/src/ring.cpp.o: src/ring.h
 
 CMakeFiles/fighter-plane.dir/src/timer.cpp.o: src/timer.cpp
 CMakeFiles/fighter-plane.dir/src/timer.cpp.o: src/timer.h
+
+CMakeFiles/fighter-plane.dir/src/volcano.cpp.o: src/main.h
+CMakeFiles/fighter-plane.dir/src/volcano.cpp.o: src/volcano.cpp
+CMakeFiles/fighter-plane.dir/src/volcano.cpp.o: src/volcano.h
 

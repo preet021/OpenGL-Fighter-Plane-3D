@@ -101,6 +101,8 @@ needle.h
 /home/preet/IIIT/2-2/Graphics/Assignments/2/3D-fighter-plane/src/needle.h
 ring.h
 /home/preet/IIIT/2-2/Graphics/Assignments/2/3D-fighter-plane/src/ring.h
+volcano.h
+/home/preet/IIIT/2-2/Graphics/Assignments/2/3D-fighter-plane/src/volcano.h
 fuel.h
 /home/preet/IIIT/2-2/Graphics/Assignments/2/3D-fighter-plane/src/fuel.h
 algorithm
@@ -209,4 +211,14 @@ GLFW/glfw3.h
 -
 
 /home/preet/IIIT/2-2/Graphics/Assignments/2/3D-fighter-plane/src/timer.h
+
+/home/preet/IIIT/2-2/Graphics/Assignments/2/3D-fighter-plane/src/volcano.cpp
+main.h
+/home/preet/IIIT/2-2/Graphics/Assignments/2/3D-fighter-plane/src/main.h
+volcano.h
+/home/preet/IIIT/2-2/Graphics/Assignments/2/3D-fighter-plane/src/volcano.h
+
+/home/preet/IIIT/2-2/Graphics/Assignments/2/3D-fighter-plane/src/volcano.h
+main.h
+/home/preet/IIIT/2-2/Graphics/Assignments/2/3D-fighter-plane/src/main.h
 

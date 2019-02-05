@@ -10,6 +10,7 @@ file(REMOVE_RECURSE
   "CMakeFiles/fighter-plane.dir/src/fan.cpp.o"
   "CMakeFiles/fighter-plane.dir/src/timer.cpp.o"
   "CMakeFiles/fighter-plane.dir/src/ring.cpp.o"
+  "CMakeFiles/fighter-plane.dir/src/volcano.cpp.o"
   "CMakeFiles/fighter-plane.dir/src/main.cpp.o"
   "CMakeFiles/fighter-plane.dir/src/nonedit.cpp.o"
   "CMakeFiles/fighter-plane.dir/src/other_handlers.cpp.o"
