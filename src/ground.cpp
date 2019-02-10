@@ -7,7 +7,7 @@ Ground::Ground(float x, float y, float z) {
     this->position = glm::vec3(x, y, z);
     this->rotation = 0;
     this->deep = 0;
-
+    this->gmax = INF;
 
 
     GLfloat vertex_buffer_data[] = {

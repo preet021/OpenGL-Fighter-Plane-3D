@@ -10,11 +10,14 @@
 
 #include "volcano.h"
 #include "fuel.h"
+#include "missile.h"
+#include "bomb.h"
+#include "island.h"
 #include <algorithm>
 #include <list>
 
 #define INF 100000
-#define NO_OF_FISHES 100
+#define NO_OF_FISHES 200
 using namespace std;
 
 GLMatrices Matrices;
@@ -34,11 +37,15 @@ Dashboard db;
 list <Ring> rings;
 list <Fuel> ftanks;
 list <Volcano> volc;
+list <Missile> missiles;
+list <Bomb> bombs;
+list <Island> islands;
+list <Island>::iterator checkpoint;
 
 float screen_zoom = 1, screen_center_x = 0, screen_center_y = 0;
 float camera_rotation_angle = 0, ea, eb, ec, ta, tb, tc, ua, ub, uc, curX = 0, curY = 0, heli_cam_view_radius = 100, heli_cam_view_elevation = 0, heli_cam_view_rotation = 0;
 bool plane_view = 0, follow_cam_view = 1, top_view = 0, heli_cam_view = 0, tower_view = 0, heli_cam_init;
-int cnt = 0;
+int cnt = 0, missile_tick = 0, bomb_tick = 0;
 GLFWcursor *cursor = glfwCreateStandardCursor(GLFW_HRESIZE_CURSOR);
 
 void detect_collisions();
@@ -104,6 +111,15 @@ void draw() {
     for (list<Volcano>::iterator it=volc.begin(); it!=volc.end(); it++) {
         it->draw(VP);
     }
+    for (list<Missile>::iterator it=missiles.begin(); it!=missiles.end(); it++) {
+        it->draw(VP);
+    }
+    for (list<Bomb>::iterator it=bombs.begin(); it!=bombs.end(); it++) {
+        it->draw(VP);
+    }
+    for (list<Island>::iterator it=islands.begin(); it!=islands.end(); it++) {
+        it->draw(VP);
+    }
 }
 
 void tick_input(GLFWwindow *window) {
@@ -119,6 +135,21 @@ void tick_input(GLFWwindow *window) {
     int q = glfwGetKey(window, GLFW_KEY_Q);
     int e = glfwGetKey(window, GLFW_KEY_E);
     int w = glfwGetKey(window, GLFW_KEY_W);
+    int m = glfwGetKey(window, GLFW_KEY_M);
+    int mouse_left = glfwGetMouseButton(window, GLFW_MOUSE_BUTTON_LEFT);
+    int mouse_right = glfwGetMouseButton(window, GLFW_MOUSE_BUTTON_RIGHT);
+
+    if (mouse_left == GLFW_PRESS && missile_tick <= 0) {
+        missile_tick = 40;
+        missiles.push_back(Missile(plane.rotation.y, plane.position.x, plane.position.y, plane.position.z));
+    }
+    --missile_tick;
+
+    if (mouse_right == GLFW_PRESS && bomb_tick <= 0) {
+        bomb_tick = 40;
+        bombs.push_back(Bomb(plane.position.x, plane.position.y, plane.position.z));
+    }
+    --bomb_tick;
     
     if (left) {
         plane_view = tower_view = follow_cam_view = heli_cam_view = top_view = 0;
@@ -168,6 +199,8 @@ void tick_input(GLFWwindow *window) {
     }
 
     else if (w) {
+        if (plane.rotation.z > 0) plane.rotation.z -= plane.tilt;
+        else if (plane.rotation.z < 0) plane.rotation.z += plane.tilt;
         plane.speed_z += plane.acc_z;
         if (plane.speed_z > 3) plane.speed_z = 3;
         plane.position.z -= plane.speed_z * cos(plane.rotation.y * M_PI / 180.0);
@@ -248,6 +281,15 @@ void tick_elements() {
     needle[2].rotation = min(90 - (plane.fuel/plane.maxfuel)*180, (double)90); //fuel
     needle[1].rotation = max(90 - (plane.position.y/plane.maxalt)*180, (double)-90); //altitude
 
+    for (list<Missile>::iterator it=missiles.begin(); it!=missiles.end(); it++) {
+        it->position.z -= it->speed * cos(it->rotation * M_PI / 180.0);
+        it->position.x -= it->speed * sin(it->rotation * M_PI / 180.0);
+    }
+
+    for (list<Bomb>::iterator it=bombs.begin(); it!=bombs.end(); it++) {
+        it->position.y -= it->speed;
+    }
+
 }
 
 /* Initialize the OpenGL rendering properties */
@@ -263,7 +305,7 @@ void initGL(GLFWwindow *window, int width, int height) {
     ground = Ground(0, 0, 0);
     
     for (int i=0; i<NO_OF_FISHES; ++i) {
-        fishes[i] = Fish(-250 + rand() % 500, -ground.deep, -(rand() % 1000));
+        fishes[i] = Fish(-5000 + rand() % 5000, -ground.deep + 6, -(rand() % 5000));
     }
     
     fan = Fan(0, 0, 0);
@@ -275,22 +317,28 @@ void initGL(GLFWwindow *window, int width, int height) {
     needle[2] = Needle(8, -11, 0, b);
     needle[2].rotation = -90;
 
-    rings.assign(10, Ring(0, 0, 0));
+    rings.assign(40, Ring(0, 0, 0));
 
     for (list<Ring>::iterator it=rings.begin(); it!=rings.end(); it++) {
-        *it = Ring(-250 + rand() % 500, 50 + rand() % 100, -(rand() % 1000));
+        *it = Ring(-2500 + rand() % 5000, 50 + rand() % 100, -(rand() % 5000));
     }
 
-    ftanks.assign(5, Fuel(0, 0, 0));
+    ftanks.assign(20, Fuel(0, 0, 0));
 
     for (list<Fuel>::iterator it=ftanks.begin(); it!=ftanks.end(); it++) {
-        *it = Fuel(-250 + rand() % 500, 50 + rand() % 100, -(rand() % 1000));
+        *it = Fuel(-2500 + rand() % 5000, 50 + rand() % 100, -(rand() % 5000));
     }
 
-    volc.assign(5, Volcano(0, 0, 0));
+    volc.assign(20, Volcano(0, 0, 0));
 
     for (list<Volcano>::iterator it=volc.begin(); it!=volc.end(); it++) {
-        *it = Volcano(-500 + rand() % 1000, 0, -(rand() % 1000));
+        *it = Volcano(-5000 + rand() % 5000, 0, -(rand() % 5000));
+    }
+
+    islands.assign(1, Island(0, 0, 0));
+    for (list<Island>::iterator it=islands.begin(); it!=islands.end(); it++) {
+        checkpoint = it;
+        *it = Island(-5000 + rand() % 5000, 12, -(rand() % 5000));
     }
 
     // Create and compile our GLSL program from the shaders
@@ -351,51 +399,92 @@ int main(int argc, char **argv) {
 void detect_collisions() {
 
     // plane and smoke ring
-    list<Ring>::iterator cur;
+    list<Ring>::iterator it_ring;
     for (list<Ring>::iterator it=rings.begin(); it!=rings.end();) {
-        cur = it;
+        it_ring = it;
         it++;
         float plx = plane.position.x, ply = plane.position.y, plz = plane.position.z;
-        float rgx = cur->position.x, rgy = cur->position.y, rgz = cur->position.z, radius = cur->radius;
+        float rgx = it_ring->position.x, rgy = it_ring->position.y, rgz = it_ring->position.z, radius = it_ring->radius;
         bool x, y, z;
         x = y = z = 0;
         if (plx >= rgx - radius && plx <= rgx + radius) x = 1;
         if (ply >= rgy - radius && ply <= rgy + radius) y = 1;
         if (plz >= rgz - 0.7*plane.rlength && plz <= rgz + 0.7*plane.rlength) z = 1;
         if (x && y && z) {
-            rings.erase(cur);
+            rings.erase(it_ring);
         }
     }
 
     // plane and smoke fuel tank
-    list<Fuel>::iterator curr;
+    list<Fuel>::iterator it_fuel;
     for (list<Fuel>::iterator it=ftanks.begin(); it!=ftanks.end();) {
-        curr = it;
+        it_fuel = it;
         it++;
         float plx = plane.position.x, ply = plane.position.y, plz = plane.position.z;
-        float ftx = curr->position.x, fty = curr->position.y, ftz = curr->position.z, radius = curr->side;
+        float ftx = it_fuel->position.x, fty = it_fuel->position.y, ftz = it_fuel->position.z, radius = it_fuel->side;
         bool x, y, z;
         x = y = z = 0;
         if (plx >= ftx - radius && plx <= ftx + radius) x = 1;
         if (ply >= fty - radius && ply <= fty + radius) y = 1;
         if (plz >= ftz - plane.rlength && plz <= ftz + plane.rlength) z = 1;
         if (x && y && z) {
-            ftanks.erase(curr);
+            ftanks.erase(it_fuel);
             plane.fuel = plane.maxfuel;
         }
     }
 
     // no flying zone (volcano)
-    list<Volcano>::iterator curv;
+    list<Volcano>::iterator it_volc;
     for (list<Volcano>::iterator it=volc.begin(); it!=volc.end();) {
-        curv = it;
+        it_volc = it;
         it++;
         float plx = plane.position.x, plz = plane.position.z;
-        float vlx = curv->position.x, vlz = curv->position.z, side=curv->side;
+        float vlx = it_volc->position.x, vlz = it_volc->position.z, side=it_volc->side;
         if (plx >= vlx - side && plx <= vlx + side && plz >= vlz - side && plz <= vlz + side) {
             cout << cnt << " game ended" << endl;++cnt;
         }
     }
+
+    // bomb and island
+    list<Bomb>::iterator it_bomb;
+    for (list<Bomb>::iterator it=bombs.begin(); it!=bombs.end();) {
+        it_bomb = it;
+        it++;
+        if (it_bomb->position.y <= 0) {
+            bombs.erase(it_bomb);
+            continue;
+        }
+        bool x = 0, y = 0, z = 0;
+        float bx = it_bomb->position.x, by = it_bomb->position.y, bz = it_bomb->position.z;
+        if (bx >= checkpoint->position.x - checkpoint->side && bx <= checkpoint->position.x + checkpoint->side) x = 1;
+        if (bz >= checkpoint->position.z - checkpoint->side && bz <= checkpoint->position.z + checkpoint->side) z = 1;
+        if (by >= checkpoint->position.y + checkpoint->height - checkpoint->side && by <= checkpoint->position.y + checkpoint->height + checkpoint->side) y = 1;
+        if (x && y && z) {
+            bombs.erase(it_bomb);
+            cout << cnt << " bomb hits island" << endl; ++cnt;
+        }
+    }
+
+    // missisle and island
+    list<Missile>::iterator it_miss;
+    for (list<Missile>::iterator it=missiles.begin(); it!=missiles.end();) {
+        it_miss = it;
+        it++;
+        if (abs(it_miss->position.z) > ground.gmax || abs(it_miss->position.x) > ground.gmax) {
+            missiles.erase(it_miss);
+            continue;
+        }
+        bool x = 0, y = 0, z = 0;
+        float mx = it_miss->position.x, my = it_miss->position.y, mz = it_miss->position.z;
+        if (mx >= checkpoint->position.x - checkpoint->side && mx <= checkpoint->position.x + checkpoint->side) x = 1;
+        if (mz >= checkpoint->position.z - checkpoint->side && mz <= checkpoint->position.z + checkpoint->side) z = 1;
+        if (my >= checkpoint->position.y + checkpoint->height - checkpoint->side && my <= checkpoint->position.y + checkpoint->height + checkpoint->side) y = 1;
+        if (x && y && z) {
+            missiles.erase(it_miss);
+            cout << cnt << " missile hits island" << endl; ++cnt;
+        }
+    }
+
 }
 
 void reset_screen() {

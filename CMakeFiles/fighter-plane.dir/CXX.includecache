@@ -6,6 +6,16 @@
 
 #IncludeRegexTransform: 
 
+/home/preet/IIIT/2-2/Graphics/Assignments/2/3D-fighter-plane/src/bomb.cpp
+main.h
+/home/preet/IIIT/2-2/Graphics/Assignments/2/3D-fighter-plane/src/main.h
+bomb.h
+/home/preet/IIIT/2-2/Graphics/Assignments/2/3D-fighter-plane/src/bomb.h
+
+/home/preet/IIIT/2-2/Graphics/Assignments/2/3D-fighter-plane/src/bomb.h
+main.h
+/home/preet/IIIT/2-2/Graphics/Assignments/2/3D-fighter-plane/src/main.h
+
 /home/preet/IIIT/2-2/Graphics/Assignments/2/3D-fighter-plane/src/color.cpp
 main.h
 /home/preet/IIIT/2-2/Graphics/Assignments/2/3D-fighter-plane/src/main.h
@@ -82,6 +92,16 @@ glm/gtc/matrix_transform.hpp
 main.h
 /home/preet/IIIT/2-2/Graphics/Assignments/2/3D-fighter-plane/src/main.h
 
+/home/preet/IIIT/2-2/Graphics/Assignments/2/3D-fighter-plane/src/island.cpp
+main.h
+/home/preet/IIIT/2-2/Graphics/Assignments/2/3D-fighter-plane/src/main.h
+island.h
+/home/preet/IIIT/2-2/Graphics/Assignments/2/3D-fighter-plane/src/island.h
+
+/home/preet/IIIT/2-2/Graphics/Assignments/2/3D-fighter-plane/src/island.h
+main.h
+/home/preet/IIIT/2-2/Graphics/Assignments/2/3D-fighter-plane/src/main.h
+
 /home/preet/IIIT/2-2/Graphics/Assignments/2/3D-fighter-plane/src/main.cpp
 main.h
 /home/preet/IIIT/2-2/Graphics/Assignments/2/3D-fighter-plane/src/main.h
@@ -105,6 +125,12 @@ volcano.h
 /home/preet/IIIT/2-2/Graphics/Assignments/2/3D-fighter-plane/src/volcano.h
 fuel.h
 /home/preet/IIIT/2-2/Graphics/Assignments/2/3D-fighter-plane/src/fuel.h
+missile.h
+/home/preet/IIIT/2-2/Graphics/Assignments/2/3D-fighter-plane/src/missile.h
+bomb.h
+/home/preet/IIIT/2-2/Graphics/Assignments/2/3D-fighter-plane/src/bomb.h
+island.h
+/home/preet/IIIT/2-2/Graphics/Assignments/2/3D-fighter-plane/src/island.h
 algorithm
 -
 list
@@ -129,6 +155,16 @@ glm/gtx/transform.hpp
 -
 glm/gtc/matrix_transform.hpp
 -
+
+/home/preet/IIIT/2-2/Graphics/Assignments/2/3D-fighter-plane/src/missile.cpp
+main.h
+/home/preet/IIIT/2-2/Graphics/Assignments/2/3D-fighter-plane/src/main.h
+missile.h
+/home/preet/IIIT/2-2/Graphics/Assignments/2/3D-fighter-plane/src/missile.h
+
+/home/preet/IIIT/2-2/Graphics/Assignments/2/3D-fighter-plane/src/missile.h
+main.h
+/home/preet/IIIT/2-2/Graphics/Assignments/2/3D-fighter-plane/src/main.h
 
 /home/preet/IIIT/2-2/Graphics/Assignments/2/3D-fighter-plane/src/needle.cpp
 main.h

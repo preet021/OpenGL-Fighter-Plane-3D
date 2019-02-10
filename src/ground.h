@@ -11,7 +11,7 @@ public:
     float rotation;
     void draw(glm::mat4 VP);
     void tick();
-    double deep;
+    double deep, gmax;
 private:
     VAO *object, *ob1;
 };

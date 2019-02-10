@@ -123,6 +123,33 @@ fighter-plane/fast:
 	$(MAKE) -f CMakeFiles/fighter-plane.dir/build.make CMakeFiles/fighter-plane.dir/build
 .PHONY : fighter-plane/fast
 
+src/bomb.o: src/bomb.cpp.o
+
+.PHONY : src/bomb.o
+
+# target to build an object file
+src/bomb.cpp.o:
+	$(MAKE) -f CMakeFiles/fighter-plane.dir/build.make CMakeFiles/fighter-plane.dir/src/bomb.cpp.o
+.PHONY : src/bomb.cpp.o
+
+src/bomb.i: src/bomb.cpp.i
+
+.PHONY : src/bomb.i
+
+# target to preprocess a source file
+src/bomb.cpp.i:
+	$(MAKE) -f CMakeFiles/fighter-plane.dir/build.make CMakeFiles/fighter-plane.dir/src/bomb.cpp.i
+.PHONY : src/bomb.cpp.i
+
+src/bomb.s: src/bomb.cpp.s
+
+.PHONY : src/bomb.s
+
+# target to generate assembly for a file
+src/bomb.cpp.s:
+	$(MAKE) -f CMakeFiles/fighter-plane.dir/build.make CMakeFiles/fighter-plane.dir/src/bomb.cpp.s
+.PHONY : src/bomb.cpp.s
+
 src/color.o: src/color.cpp.o
 
 .PHONY : src/color.o
@@ -312,6 +339,33 @@ src/input.cpp.s:
 	$(MAKE) -f CMakeFiles/fighter-plane.dir/build.make CMakeFiles/fighter-plane.dir/src/input.cpp.s
 .PHONY : src/input.cpp.s
 
+src/island.o: src/island.cpp.o
+
+.PHONY : src/island.o
+
+# target to build an object file
+src/island.cpp.o:
+	$(MAKE) -f CMakeFiles/fighter-plane.dir/build.make CMakeFiles/fighter-plane.dir/src/island.cpp.o
+.PHONY : src/island.cpp.o
+
+src/island.i: src/island.cpp.i
+
+.PHONY : src/island.i
+
+# target to preprocess a source file
+src/island.cpp.i:
+	$(MAKE) -f CMakeFiles/fighter-plane.dir/build.make CMakeFiles/fighter-plane.dir/src/island.cpp.i
+.PHONY : src/island.cpp.i
+
+src/island.s: src/island.cpp.s
+
+.PHONY : src/island.s
+
+# target to generate assembly for a file
+src/island.cpp.s:
+	$(MAKE) -f CMakeFiles/fighter-plane.dir/build.make CMakeFiles/fighter-plane.dir/src/island.cpp.s
+.PHONY : src/island.cpp.s
+
 src/main.o: src/main.cpp.o
 
 .PHONY : src/main.o
@@ -338,6 +392,33 @@ src/main.s: src/main.cpp.s
 src/main.cpp.s:
 	$(MAKE) -f CMakeFiles/fighter-plane.dir/build.make CMakeFiles/fighter-plane.dir/src/main.cpp.s
 .PHONY : src/main.cpp.s
+
+src/missile.o: src/missile.cpp.o
+
+.PHONY : src/missile.o
+
+# target to build an object file
+src/missile.cpp.o:
+	$(MAKE) -f CMakeFiles/fighter-plane.dir/build.make CMakeFiles/fighter-plane.dir/src/missile.cpp.o
+.PHONY : src/missile.cpp.o
+
+src/missile.i: src/missile.cpp.i
+
+.PHONY : src/missile.i
+
+# target to preprocess a source file
+src/missile.cpp.i:
+	$(MAKE) -f CMakeFiles/fighter-plane.dir/build.make CMakeFiles/fighter-plane.dir/src/missile.cpp.i
+.PHONY : src/missile.cpp.i
+
+src/missile.s: src/missile.cpp.s
+
+.PHONY : src/missile.s
+
+# target to generate assembly for a file
+src/missile.cpp.s:
+	$(MAKE) -f CMakeFiles/fighter-plane.dir/build.make CMakeFiles/fighter-plane.dir/src/missile.cpp.s
+.PHONY : src/missile.cpp.s
 
 src/needle.o: src/needle.cpp.o
 
@@ -537,6 +618,9 @@ help:
 	@echo "... edit_cache"
 	@echo "... fighter-plane"
 	@echo "... rebuild_cache"
+	@echo "... src/bomb.o"
+	@echo "... src/bomb.i"
+	@echo "... src/bomb.s"
 	@echo "... src/color.o"
 	@echo "... src/color.i"
 	@echo "... src/color.s"
@@ -558,9 +642,15 @@ help:
 	@echo "... src/input.o"
 	@echo "... src/input.i"
 	@echo "... src/input.s"
+	@echo "... src/island.o"
+	@echo "... src/island.i"
+	@echo "... src/island.s"
 	@echo "... src/main.o"
 	@echo "... src/main.i"
 	@echo "... src/main.s"
+	@echo "... src/missile.o"
+	@echo "... src/missile.i"
+	@echo "... src/missile.s"
 	@echo "... src/needle.o"
 	@echo "... src/needle.i"
 	@echo "... src/needle.s"

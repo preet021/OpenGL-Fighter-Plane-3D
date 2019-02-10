@@ -273,9 +273,33 @@ CMakeFiles/fighter-plane.dir/src/fan.cpp.o.provides: CMakeFiles/fighter-plane.di
 CMakeFiles/fighter-plane.dir/src/fan.cpp.o.provides.build: CMakeFiles/fighter-plane.dir/src/fan.cpp.o
 
 
+CMakeFiles/fighter-plane.dir/src/missile.cpp.o: CMakeFiles/fighter-plane.dir/flags.make
+CMakeFiles/fighter-plane.dir/src/missile.cpp.o: src/missile.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/preet/IIIT/2-2/Graphics/Assignments/2/3D-fighter-plane/CMakeFiles --progress-num=$(CMAKE_PROGRESS_10) "Building CXX object CMakeFiles/fighter-plane.dir/src/missile.cpp.o"
+	/usr/bin/c++   $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/fighter-plane.dir/src/missile.cpp.o -c /home/preet/IIIT/2-2/Graphics/Assignments/2/3D-fighter-plane/src/missile.cpp
+
+CMakeFiles/fighter-plane.dir/src/missile.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/fighter-plane.dir/src/missile.cpp.i"
+	/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/preet/IIIT/2-2/Graphics/Assignments/2/3D-fighter-plane/src/missile.cpp > CMakeFiles/fighter-plane.dir/src/missile.cpp.i
+
+CMakeFiles/fighter-plane.dir/src/missile.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/fighter-plane.dir/src/missile.cpp.s"
+	/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/preet/IIIT/2-2/Graphics/Assignments/2/3D-fighter-plane/src/missile.cpp -o CMakeFiles/fighter-plane.dir/src/missile.cpp.s
+
+CMakeFiles/fighter-plane.dir/src/missile.cpp.o.requires:
+
+.PHONY : CMakeFiles/fighter-plane.dir/src/missile.cpp.o.requires
+
+CMakeFiles/fighter-plane.dir/src/missile.cpp.o.provides: CMakeFiles/fighter-plane.dir/src/missile.cpp.o.requires
+	$(MAKE) -f CMakeFiles/fighter-plane.dir/build.make CMakeFiles/fighter-plane.dir/src/missile.cpp.o.provides.build
+.PHONY : CMakeFiles/fighter-plane.dir/src/missile.cpp.o.provides
+
+CMakeFiles/fighter-plane.dir/src/missile.cpp.o.provides.build: CMakeFiles/fighter-plane.dir/src/missile.cpp.o
+
+
 CMakeFiles/fighter-plane.dir/src/timer.cpp.o: CMakeFiles/fighter-plane.dir/flags.make
 CMakeFiles/fighter-plane.dir/src/timer.cpp.o: src/timer.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/preet/IIIT/2-2/Graphics/Assignments/2/3D-fighter-plane/CMakeFiles --progress-num=$(CMAKE_PROGRESS_10) "Building CXX object CMakeFiles/fighter-plane.dir/src/timer.cpp.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/preet/IIIT/2-2/Graphics/Assignments/2/3D-fighter-plane/CMakeFiles --progress-num=$(CMAKE_PROGRESS_11) "Building CXX object CMakeFiles/fighter-plane.dir/src/timer.cpp.o"
 	/usr/bin/c++   $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/fighter-plane.dir/src/timer.cpp.o -c /home/preet/IIIT/2-2/Graphics/Assignments/2/3D-fighter-plane/src/timer.cpp
 
 CMakeFiles/fighter-plane.dir/src/timer.cpp.i: cmake_force
@@ -299,7 +323,7 @@ CMakeFiles/fighter-plane.dir/src/timer.cpp.o.provides.build: CMakeFiles/fighter-
 
 CMakeFiles/fighter-plane.dir/src/ring.cpp.o: CMakeFiles/fighter-plane.dir/flags.make
 CMakeFiles/fighter-plane.dir/src/ring.cpp.o: src/ring.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/preet/IIIT/2-2/Graphics/Assignments/2/3D-fighter-plane/CMakeFiles --progress-num=$(CMAKE_PROGRESS_11) "Building CXX object CMakeFiles/fighter-plane.dir/src/ring.cpp.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/preet/IIIT/2-2/Graphics/Assignments/2/3D-fighter-plane/CMakeFiles --progress-num=$(CMAKE_PROGRESS_12) "Building CXX object CMakeFiles/fighter-plane.dir/src/ring.cpp.o"
 	/usr/bin/c++   $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/fighter-plane.dir/src/ring.cpp.o -c /home/preet/IIIT/2-2/Graphics/Assignments/2/3D-fighter-plane/src/ring.cpp
 
 CMakeFiles/fighter-plane.dir/src/ring.cpp.i: cmake_force
@@ -323,7 +347,7 @@ CMakeFiles/fighter-plane.dir/src/ring.cpp.o.provides.build: CMakeFiles/fighter-p
 
 CMakeFiles/fighter-plane.dir/src/volcano.cpp.o: CMakeFiles/fighter-plane.dir/flags.make
 CMakeFiles/fighter-plane.dir/src/volcano.cpp.o: src/volcano.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/preet/IIIT/2-2/Graphics/Assignments/2/3D-fighter-plane/CMakeFiles --progress-num=$(CMAKE_PROGRESS_12) "Building CXX object CMakeFiles/fighter-plane.dir/src/volcano.cpp.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/preet/IIIT/2-2/Graphics/Assignments/2/3D-fighter-plane/CMakeFiles --progress-num=$(CMAKE_PROGRESS_13) "Building CXX object CMakeFiles/fighter-plane.dir/src/volcano.cpp.o"
 	/usr/bin/c++   $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/fighter-plane.dir/src/volcano.cpp.o -c /home/preet/IIIT/2-2/Graphics/Assignments/2/3D-fighter-plane/src/volcano.cpp
 
 CMakeFiles/fighter-plane.dir/src/volcano.cpp.i: cmake_force
@@ -347,7 +371,7 @@ CMakeFiles/fighter-plane.dir/src/volcano.cpp.o.provides.build: CMakeFiles/fighte
 
 CMakeFiles/fighter-plane.dir/src/main.cpp.o: CMakeFiles/fighter-plane.dir/flags.make
 CMakeFiles/fighter-plane.dir/src/main.cpp.o: src/main.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/preet/IIIT/2-2/Graphics/Assignments/2/3D-fighter-plane/CMakeFiles --progress-num=$(CMAKE_PROGRESS_13) "Building CXX object CMakeFiles/fighter-plane.dir/src/main.cpp.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/preet/IIIT/2-2/Graphics/Assignments/2/3D-fighter-plane/CMakeFiles --progress-num=$(CMAKE_PROGRESS_14) "Building CXX object CMakeFiles/fighter-plane.dir/src/main.cpp.o"
 	/usr/bin/c++   $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/fighter-plane.dir/src/main.cpp.o -c /home/preet/IIIT/2-2/Graphics/Assignments/2/3D-fighter-plane/src/main.cpp
 
 CMakeFiles/fighter-plane.dir/src/main.cpp.i: cmake_force
@@ -369,9 +393,57 @@ CMakeFiles/fighter-plane.dir/src/main.cpp.o.provides: CMakeFiles/fighter-plane.d
 CMakeFiles/fighter-plane.dir/src/main.cpp.o.provides.build: CMakeFiles/fighter-plane.dir/src/main.cpp.o
 
 
+CMakeFiles/fighter-plane.dir/src/bomb.cpp.o: CMakeFiles/fighter-plane.dir/flags.make
+CMakeFiles/fighter-plane.dir/src/bomb.cpp.o: src/bomb.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/preet/IIIT/2-2/Graphics/Assignments/2/3D-fighter-plane/CMakeFiles --progress-num=$(CMAKE_PROGRESS_15) "Building CXX object CMakeFiles/fighter-plane.dir/src/bomb.cpp.o"
+	/usr/bin/c++   $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/fighter-plane.dir/src/bomb.cpp.o -c /home/preet/IIIT/2-2/Graphics/Assignments/2/3D-fighter-plane/src/bomb.cpp
+
+CMakeFiles/fighter-plane.dir/src/bomb.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/fighter-plane.dir/src/bomb.cpp.i"
+	/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/preet/IIIT/2-2/Graphics/Assignments/2/3D-fighter-plane/src/bomb.cpp > CMakeFiles/fighter-plane.dir/src/bomb.cpp.i
+
+CMakeFiles/fighter-plane.dir/src/bomb.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/fighter-plane.dir/src/bomb.cpp.s"
+	/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/preet/IIIT/2-2/Graphics/Assignments/2/3D-fighter-plane/src/bomb.cpp -o CMakeFiles/fighter-plane.dir/src/bomb.cpp.s
+
+CMakeFiles/fighter-plane.dir/src/bomb.cpp.o.requires:
+
+.PHONY : CMakeFiles/fighter-plane.dir/src/bomb.cpp.o.requires
+
+CMakeFiles/fighter-plane.dir/src/bomb.cpp.o.provides: CMakeFiles/fighter-plane.dir/src/bomb.cpp.o.requires
+	$(MAKE) -f CMakeFiles/fighter-plane.dir/build.make CMakeFiles/fighter-plane.dir/src/bomb.cpp.o.provides.build
+.PHONY : CMakeFiles/fighter-plane.dir/src/bomb.cpp.o.provides
+
+CMakeFiles/fighter-plane.dir/src/bomb.cpp.o.provides.build: CMakeFiles/fighter-plane.dir/src/bomb.cpp.o
+
+
+CMakeFiles/fighter-plane.dir/src/island.cpp.o: CMakeFiles/fighter-plane.dir/flags.make
+CMakeFiles/fighter-plane.dir/src/island.cpp.o: src/island.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/preet/IIIT/2-2/Graphics/Assignments/2/3D-fighter-plane/CMakeFiles --progress-num=$(CMAKE_PROGRESS_16) "Building CXX object CMakeFiles/fighter-plane.dir/src/island.cpp.o"
+	/usr/bin/c++   $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/fighter-plane.dir/src/island.cpp.o -c /home/preet/IIIT/2-2/Graphics/Assignments/2/3D-fighter-plane/src/island.cpp
+
+CMakeFiles/fighter-plane.dir/src/island.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/fighter-plane.dir/src/island.cpp.i"
+	/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/preet/IIIT/2-2/Graphics/Assignments/2/3D-fighter-plane/src/island.cpp > CMakeFiles/fighter-plane.dir/src/island.cpp.i
+
+CMakeFiles/fighter-plane.dir/src/island.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/fighter-plane.dir/src/island.cpp.s"
+	/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/preet/IIIT/2-2/Graphics/Assignments/2/3D-fighter-plane/src/island.cpp -o CMakeFiles/fighter-plane.dir/src/island.cpp.s
+
+CMakeFiles/fighter-plane.dir/src/island.cpp.o.requires:
+
+.PHONY : CMakeFiles/fighter-plane.dir/src/island.cpp.o.requires
+
+CMakeFiles/fighter-plane.dir/src/island.cpp.o.provides: CMakeFiles/fighter-plane.dir/src/island.cpp.o.requires
+	$(MAKE) -f CMakeFiles/fighter-plane.dir/build.make CMakeFiles/fighter-plane.dir/src/island.cpp.o.provides.build
+.PHONY : CMakeFiles/fighter-plane.dir/src/island.cpp.o.provides
+
+CMakeFiles/fighter-plane.dir/src/island.cpp.o.provides.build: CMakeFiles/fighter-plane.dir/src/island.cpp.o
+
+
 CMakeFiles/fighter-plane.dir/src/nonedit.cpp.o: CMakeFiles/fighter-plane.dir/flags.make
 CMakeFiles/fighter-plane.dir/src/nonedit.cpp.o: src/nonedit.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/preet/IIIT/2-2/Graphics/Assignments/2/3D-fighter-plane/CMakeFiles --progress-num=$(CMAKE_PROGRESS_14) "Building CXX object CMakeFiles/fighter-plane.dir/src/nonedit.cpp.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/preet/IIIT/2-2/Graphics/Assignments/2/3D-fighter-plane/CMakeFiles --progress-num=$(CMAKE_PROGRESS_17) "Building CXX object CMakeFiles/fighter-plane.dir/src/nonedit.cpp.o"
 	/usr/bin/c++   $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/fighter-plane.dir/src/nonedit.cpp.o -c /home/preet/IIIT/2-2/Graphics/Assignments/2/3D-fighter-plane/src/nonedit.cpp
 
 CMakeFiles/fighter-plane.dir/src/nonedit.cpp.i: cmake_force
@@ -395,7 +467,7 @@ CMakeFiles/fighter-plane.dir/src/nonedit.cpp.o.provides.build: CMakeFiles/fighte
 
 CMakeFiles/fighter-plane.dir/src/other_handlers.cpp.o: CMakeFiles/fighter-plane.dir/flags.make
 CMakeFiles/fighter-plane.dir/src/other_handlers.cpp.o: src/other_handlers.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/preet/IIIT/2-2/Graphics/Assignments/2/3D-fighter-plane/CMakeFiles --progress-num=$(CMAKE_PROGRESS_15) "Building CXX object CMakeFiles/fighter-plane.dir/src/other_handlers.cpp.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/preet/IIIT/2-2/Graphics/Assignments/2/3D-fighter-plane/CMakeFiles --progress-num=$(CMAKE_PROGRESS_18) "Building CXX object CMakeFiles/fighter-plane.dir/src/other_handlers.cpp.o"
 	/usr/bin/c++   $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/fighter-plane.dir/src/other_handlers.cpp.o -c /home/preet/IIIT/2-2/Graphics/Assignments/2/3D-fighter-plane/src/other_handlers.cpp
 
 CMakeFiles/fighter-plane.dir/src/other_handlers.cpp.i: cmake_force
@@ -428,10 +500,13 @@ fighter__plane_OBJECTS = \
 "CMakeFiles/fighter-plane.dir/src/fuel.cpp.o" \
 "CMakeFiles/fighter-plane.dir/src/color.cpp.o" \
 "CMakeFiles/fighter-plane.dir/src/fan.cpp.o" \
+"CMakeFiles/fighter-plane.dir/src/missile.cpp.o" \
 "CMakeFiles/fighter-plane.dir/src/timer.cpp.o" \
 "CMakeFiles/fighter-plane.dir/src/ring.cpp.o" \
 "CMakeFiles/fighter-plane.dir/src/volcano.cpp.o" \
 "CMakeFiles/fighter-plane.dir/src/main.cpp.o" \
+"CMakeFiles/fighter-plane.dir/src/bomb.cpp.o" \
+"CMakeFiles/fighter-plane.dir/src/island.cpp.o" \
 "CMakeFiles/fighter-plane.dir/src/nonedit.cpp.o" \
 "CMakeFiles/fighter-plane.dir/src/other_handlers.cpp.o"
 
@@ -447,15 +522,18 @@ fighter-plane: CMakeFiles/fighter-plane.dir/src/input.cpp.o
 fighter-plane: CMakeFiles/fighter-plane.dir/src/fuel.cpp.o
 fighter-plane: CMakeFiles/fighter-plane.dir/src/color.cpp.o
 fighter-plane: CMakeFiles/fighter-plane.dir/src/fan.cpp.o
+fighter-plane: CMakeFiles/fighter-plane.dir/src/missile.cpp.o
 fighter-plane: CMakeFiles/fighter-plane.dir/src/timer.cpp.o
 fighter-plane: CMakeFiles/fighter-plane.dir/src/ring.cpp.o
 fighter-plane: CMakeFiles/fighter-plane.dir/src/volcano.cpp.o
 fighter-plane: CMakeFiles/fighter-plane.dir/src/main.cpp.o
+fighter-plane: CMakeFiles/fighter-plane.dir/src/bomb.cpp.o
+fighter-plane: CMakeFiles/fighter-plane.dir/src/island.cpp.o
 fighter-plane: CMakeFiles/fighter-plane.dir/src/nonedit.cpp.o
 fighter-plane: CMakeFiles/fighter-plane.dir/src/other_handlers.cpp.o
 fighter-plane: CMakeFiles/fighter-plane.dir/build.make
 fighter-plane: CMakeFiles/fighter-plane.dir/link.txt
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir=/home/preet/IIIT/2-2/Graphics/Assignments/2/3D-fighter-plane/CMakeFiles --progress-num=$(CMAKE_PROGRESS_16) "Linking CXX executable fighter-plane"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir=/home/preet/IIIT/2-2/Graphics/Assignments/2/3D-fighter-plane/CMakeFiles --progress-num=$(CMAKE_PROGRESS_19) "Linking CXX executable fighter-plane"
 	$(CMAKE_COMMAND) -E cmake_link_script CMakeFiles/fighter-plane.dir/link.txt --verbose=$(VERBOSE)
 
 # Rule to build all files generated by this target.
@@ -472,10 +550,13 @@ CMakeFiles/fighter-plane.dir/requires: CMakeFiles/fighter-plane.dir/src/input.cp
 CMakeFiles/fighter-plane.dir/requires: CMakeFiles/fighter-plane.dir/src/fuel.cpp.o.requires
 CMakeFiles/fighter-plane.dir/requires: CMakeFiles/fighter-plane.dir/src/color.cpp.o.requires
 CMakeFiles/fighter-plane.dir/requires: CMakeFiles/fighter-plane.dir/src/fan.cpp.o.requires
+CMakeFiles/fighter-plane.dir/requires: CMakeFiles/fighter-plane.dir/src/missile.cpp.o.requires
 CMakeFiles/fighter-plane.dir/requires: CMakeFiles/fighter-plane.dir/src/timer.cpp.o.requires
 CMakeFiles/fighter-plane.dir/requires: CMakeFiles/fighter-plane.dir/src/ring.cpp.o.requires
 CMakeFiles/fighter-plane.dir/requires: CMakeFiles/fighter-plane.dir/src/volcano.cpp.o.requires
 CMakeFiles/fighter-plane.dir/requires: CMakeFiles/fighter-plane.dir/src/main.cpp.o.requires
+CMakeFiles/fighter-plane.dir/requires: CMakeFiles/fighter-plane.dir/src/bomb.cpp.o.requires
+CMakeFiles/fighter-plane.dir/requires: CMakeFiles/fighter-plane.dir/src/island.cpp.o.requires
 CMakeFiles/fighter-plane.dir/requires: CMakeFiles/fighter-plane.dir/src/nonedit.cpp.o.requires
 CMakeFiles/fighter-plane.dir/requires: CMakeFiles/fighter-plane.dir/src/other_handlers.cpp.o.requires
 
