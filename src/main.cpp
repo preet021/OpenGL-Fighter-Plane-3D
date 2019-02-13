@@ -13,7 +13,10 @@
 #include "missile.h"
 #include "bomb.h"
 #include "island.h"
+#include "enemy.h"
+#include "arrow.h"
 #include <algorithm>
+#include <cmath>
 #include <list>
 
 #define INF 100000
@@ -28,6 +31,7 @@ GLFWwindow *window;
 * Customizable functions *
 **************************/
 
+Arrow arrow;
 Needle needle[3];
 Fan fan;
 Plane plane;
@@ -38,6 +42,7 @@ list <Ring> rings;
 list <Fuel> ftanks;
 list <Volcano> volc;
 list <Missile> missiles;
+list <Enemy> emissiles;
 list <Bomb> bombs;
 list <Island> islands;
 list <Island>::iterator checkpoint;
@@ -45,10 +50,12 @@ list <Island>::iterator checkpoint;
 float screen_zoom = 1, screen_center_x = 0, screen_center_y = 0;
 float camera_rotation_angle = 0, ea, eb, ec, ta, tb, tc, ua, ub, uc, curX = 0, curY = 0, heli_cam_view_radius = 100, heli_cam_view_elevation = 0, heli_cam_view_rotation = 0;
 bool plane_view = 0, follow_cam_view = 1, top_view = 0, heli_cam_view = 0, tower_view = 0, heli_cam_init;
-int cnt = 0, missile_tick = 0, bomb_tick = 0;
+int cnt = 0, missile_tick = 0, bomb_tick = 0, emissile_tick = 0, rem_checkpoints = 5;
 GLFWcursor *cursor = glfwCreateStandardCursor(GLFW_HRESIZE_CURSOR);
 
 void detect_collisions();
+float sq (float x);
+float dist (float a, float b, float c, float d, float e, float f);
 
 Timer t60(1.0 / 60);
 
@@ -98,6 +105,7 @@ void draw() {
         fishes[i].draw(VP);
     }
     fan.draw(VP, fan.position.x - plane.position.x, fan.position.y - plane.position.y, fan.position.z - plane.position.z);
+    arrow.draw(VP1);
     db.draw(VP1);
     needle[0].draw(VP1);
     needle[1].draw(VP1);
@@ -112,6 +120,9 @@ void draw() {
         it->draw(VP);
     }
     for (list<Missile>::iterator it=missiles.begin(); it!=missiles.end(); it++) {
+        it->draw(VP);
+    }
+    for (list<Enemy>::iterator it=emissiles.begin(); it!=emissiles.end(); it++) {
         it->draw(VP);
     }
     for (list<Bomb>::iterator it=bombs.begin(); it!=bombs.end(); it++) {
@@ -138,12 +149,20 @@ void tick_input(GLFWwindow *window) {
     int m = glfwGetKey(window, GLFW_KEY_M);
     int mouse_left = glfwGetMouseButton(window, GLFW_MOUSE_BUTTON_LEFT);
     int mouse_right = glfwGetMouseButton(window, GLFW_MOUSE_BUTTON_RIGHT);
+    float enemy_plane_dist = dist(plane.position.x, plane.position.y, plane.position.z, checkpoint->position.x, checkpoint->position.y, checkpoint->position.z);
 
     if (mouse_left == GLFW_PRESS && missile_tick <= 0) {
         missile_tick = 40;
         missiles.push_back(Missile(plane.rotation.y, plane.position.x, plane.position.y, plane.position.z));
     }
     --missile_tick;
+    
+    if (enemy_plane_dist <= 2000 && emissile_tick <= 0) {
+        cout << "enemy gusse mein" << endl;
+        emissile_tick = 50;
+        emissiles.push_back(Enemy(checkpoint->position.x, checkpoint->position.y, checkpoint->position.z, plane.position.x, plane.position.y, plane.position.z));
+    }
+    --emissile_tick;
 
     if (mouse_right == GLFW_PRESS && bomb_tick <= 0) {
         bomb_tick = 40;
@@ -277,19 +296,59 @@ void tick_elements() {
     fan.position.z = plane.position.z - plane.flength * cos(plane.rotation.y * M_PI/180.0);
     fan.tick();
 
-    needle[0].rotation = max(90 * (2 - plane.speed_z), (double)-90); // speed
-    needle[2].rotation = min(90 - (plane.fuel/plane.maxfuel)*180, (double)90); //fuel
-    needle[1].rotation = max(90 - (plane.position.y/plane.maxalt)*180, (double)-90); //altitude
-
     for (list<Missile>::iterator it=missiles.begin(); it!=missiles.end(); it++) {
         it->position.z -= it->speed * cos(it->rotation * M_PI / 180.0);
         it->position.x -= it->speed * sin(it->rotation * M_PI / 180.0);
+    }
+
+    for (list<Enemy>::iterator it=emissiles.begin(); it!=emissiles.end(); it++) {
+        it->position.y += it->speed;
+        it->position.x += it->speed * it->ux / it->uy;
+        it->position.z += it->speed * it->uz / it->uy;
     }
 
     for (list<Bomb>::iterator it=bombs.begin(); it!=bombs.end(); it++) {
         it->position.y -= it->speed;
     }
 
+    // checking whether checkpoint is on left / right of the plane
+    bool on_left = 0, on_right = 0;
+    float wlx = plane.position.x - plane.radius * cos(plane.rotation.y * M_PI / 180.0);
+    float wlz = plane.position.z - plane.radius * sin(plane.rotation.y * M_PI / 180.0);
+    float wrx = plane.position.x + plane.radius * cos(plane.rotation.y * M_PI / 180.0);
+    float wrz = plane.position.z + plane.radius * sin(plane.rotation.y * M_PI / 180.0);
+    float wy = plane.position.y;
+
+    float dot_product = (fan.position.x-plane.position.x)*(checkpoint->position.x-plane.position.x);
+    dot_product += (fan.position.y-plane.position.y)*(wy-plane.position.y);
+    dot_product += (fan.position.z-plane.position.z)*(checkpoint->position.z-plane.position.z);
+    dot_product /= dist(fan.position.x-plane.position.x, fan.position.y-plane.position.y, fan.position.z-plane.position.z, 0, 0, 0);
+    dot_product /= dist(checkpoint->position.x-plane.position.x, wy-plane.position.y, checkpoint->position.z-plane.position.z, 0, 0, 0);
+    // now dot_product is equal to cos_theta
+
+    float fx = plane.position.x - plane.flength * sin((plane.rotation.y + acos(dot_product)*180/M_PI) * M_PI/180.0);
+    float fy = plane.position.y;
+    float fz = plane.position.z - plane.flength * cos((plane.rotation.y + acos(dot_product)*180/M_PI) * M_PI/180.0);
+
+    float dot_product1 = (fx-plane.position.x)*(checkpoint->position.x-plane.position.x);
+    dot_product1 += (fy-plane.position.y)*(wy-plane.position.y);
+    dot_product1 += (fz-plane.position.z)*(checkpoint->position.z-plane.position.z);
+    dot_product1 /= dist(fx-plane.position.x, fy-plane.position.y, fz-plane.position.z, 0, 0, 0);
+    dot_product1 /= dist(checkpoint->position.x-plane.position.x, wy-plane.position.y, checkpoint->position.z-plane.position.z, 0, 0, 0);
+    
+    if (dot_product > dot_product1) on_right = 1;
+    else on_left = 1;
+
+    // making the arrow to point the checkpoint
+    if (on_left)
+        arrow.rotation = (acos(dot_product) * 180) / M_PI;
+    else
+        arrow.rotation = -(acos(dot_product) * 180) / M_PI; 
+
+    // updating the dashboard
+    needle[0].rotation = max(90 * (2 - plane.speed_z), (double)-90); // speed
+    needle[1].rotation = max(90 - (plane.position.y/plane.maxalt)*180, (double)-90); //altitude
+    needle[2].rotation = min(90 - (plane.fuel/plane.maxfuel)*180, (double)90); //fuel
 }
 
 /* Initialize the OpenGL rendering properties */
@@ -301,7 +360,7 @@ void initGL(GLFWwindow *window, int width, int height) {
     color_t r = {255, 0, 0}, g = {0, 255, 0}, b = {0, 0, 255};    
 
     plane = Plane(0, 180, 0);
-    
+
     ground = Ground(0, 0, 0);
     
     for (int i=0; i<NO_OF_FISHES; ++i) {
@@ -335,11 +394,13 @@ void initGL(GLFWwindow *window, int width, int height) {
         *it = Volcano(-5000 + rand() % 5000, 0, -(rand() % 5000));
     }
 
-    islands.assign(1, Island(0, 0, 0));
+    islands.assign(rem_checkpoints, Island(0, 0, 0));
     for (list<Island>::iterator it=islands.begin(); it!=islands.end(); it++) {
-        checkpoint = it;
         *it = Island(-5000 + rand() % 5000, 12, -(rand() % 5000));
     }
+    checkpoint = islands.begin();
+
+    arrow = Arrow(0, 8, 0, 0);
 
     // Create and compile our GLSL program from the shaders
     programID = LoadShaders("Sample_GL.vert", "Sample_GL.frag");
@@ -387,12 +448,14 @@ int main(int argc, char **argv) {
             detect_collisions();
             tick_elements();
             tick_input(window);
+            if (rem_checkpoints <= 0) break;
         }
 
         // Poll for Keyboard and mouse events
         glfwPollEvents();
     }
 
+    cout << "Game Over" << endl;
     quit(window);
 }
 
@@ -441,7 +504,7 @@ void detect_collisions() {
         float plx = plane.position.x, plz = plane.position.z;
         float vlx = it_volc->position.x, vlz = it_volc->position.z, side=it_volc->side;
         if (plx >= vlx - side && plx <= vlx + side && plz >= vlz - side && plz <= vlz + side) {
-            cout << cnt << " game ended" << endl;++cnt;
+            cout << cnt << " near volcano" << endl;++cnt;
         }
     }
 
@@ -462,6 +525,10 @@ void detect_collisions() {
         if (x && y && z) {
             bombs.erase(it_bomb);
             cout << cnt << " bomb hits island" << endl; ++cnt;
+            islands.erase(islands.begin());
+            rem_checkpoints -= 1;
+            if (rem_checkpoints > 0) checkpoint = islands.begin();
+            break;
         }
     }
 
@@ -482,6 +549,32 @@ void detect_collisions() {
         if (x && y && z) {
             missiles.erase(it_miss);
             cout << cnt << " missile hits island" << endl; ++cnt;
+            islands.erase(islands.begin());
+            rem_checkpoints -= 1;
+            if (rem_checkpoints > 0) checkpoint = islands.begin();
+            break;
+        }
+    }
+
+    // enemy missisle and plane
+    list<Enemy>::iterator it_emiss;
+    for (list<Enemy>::iterator it=emissiles.begin(); it!=emissiles.end();) {
+        it_emiss = it;
+        it++;
+        if (it_emiss->position.y > plane.maxalt) {
+            emissiles.erase(it_emiss);
+            continue;
+        }
+        float rx = plane.position.x + plane.rlength * sin(plane.rotation.y * M_PI/180.0);
+        float ry = plane.position.y;
+        float rz = plane.position.z + plane.rlength * cos(plane.rotation.y * M_PI/180.0);
+        float fx = fan.position.x, fy = fan.position.y, fz = fan.position.z;
+        float len = plane.flength + plane.rlength;
+        float d = dist(it_emiss->position.x, it_emiss->position.y, it_emiss->position.z, rx, ry, rz);
+        d += dist(it_emiss->position.x, it_emiss->position.y, it_emiss->position.z, fx, fy, fz);
+        if (abs(d - len) <= plane.radius) {
+            cout << "enemy missile hits plane" << endl;
+            emissiles.erase(it_emiss);
         }
     }
 
@@ -493,6 +586,14 @@ void reset_screen() {
     float left   = screen_center_x - 40 / screen_zoom;
     float right  = screen_center_x + 40 / screen_zoom;
     Matrices.projection = glm::perspective(100*M_PI/180, (double)1 , (double)0.1, (double)INF);
+}
+
+float sq (float x) {
+    return x*x;
+}
+
+float dist (float a, float b, float c, float d, float e, float f) {
+    return sqrt(sq(a-d)+sq(b-e)+sq(c-f));
 }
 
 static void CursorPositionCallback (GLFWwindow *window, double xPos, double yPos) {

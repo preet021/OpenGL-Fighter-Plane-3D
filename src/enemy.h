@@ -3,15 +3,16 @@
 #ifndef ENEMY_H
 #define ENEMY_H
 
+
 class Enemy {
 public:
     Enemy() {}
-    Enemy(float x, float y, float z);
+    Enemy(float x, float y, float z, float vx, float vy, float vz);
     glm::vec3 position;
     float rotation;
     void draw(glm::mat4 VP);
     void tick();
-    double height, side;
+    double radius, flength, rlength, speed, ux, uy, uz;
 private:
     VAO *object;
 };

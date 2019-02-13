@@ -12,7 +12,7 @@ public:
     float rotation;
     void draw(glm::mat4 VP);
     void tick();
-    double radius, flength, rlength, speed;
+    double radius, flength, rlength, speed, sin_t;
 private:
     VAO *object, *ob1;
 };

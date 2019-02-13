@@ -123,6 +123,33 @@ fighter-plane/fast:
 	$(MAKE) -f CMakeFiles/fighter-plane.dir/build.make CMakeFiles/fighter-plane.dir/build
 .PHONY : fighter-plane/fast
 
+src/arrow.o: src/arrow.cpp.o
+
+.PHONY : src/arrow.o
+
+# target to build an object file
+src/arrow.cpp.o:
+	$(MAKE) -f CMakeFiles/fighter-plane.dir/build.make CMakeFiles/fighter-plane.dir/src/arrow.cpp.o
+.PHONY : src/arrow.cpp.o
+
+src/arrow.i: src/arrow.cpp.i
+
+.PHONY : src/arrow.i
+
+# target to preprocess a source file
+src/arrow.cpp.i:
+	$(MAKE) -f CMakeFiles/fighter-plane.dir/build.make CMakeFiles/fighter-plane.dir/src/arrow.cpp.i
+.PHONY : src/arrow.cpp.i
+
+src/arrow.s: src/arrow.cpp.s
+
+.PHONY : src/arrow.s
+
+# target to generate assembly for a file
+src/arrow.cpp.s:
+	$(MAKE) -f CMakeFiles/fighter-plane.dir/build.make CMakeFiles/fighter-plane.dir/src/arrow.cpp.s
+.PHONY : src/arrow.cpp.s
+
 src/bomb.o: src/bomb.cpp.o
 
 .PHONY : src/bomb.o
@@ -203,6 +230,33 @@ src/dashboard.s: src/dashboard.cpp.s
 src/dashboard.cpp.s:
 	$(MAKE) -f CMakeFiles/fighter-plane.dir/build.make CMakeFiles/fighter-plane.dir/src/dashboard.cpp.s
 .PHONY : src/dashboard.cpp.s
+
+src/enemy.o: src/enemy.cpp.o
+
+.PHONY : src/enemy.o
+
+# target to build an object file
+src/enemy.cpp.o:
+	$(MAKE) -f CMakeFiles/fighter-plane.dir/build.make CMakeFiles/fighter-plane.dir/src/enemy.cpp.o
+.PHONY : src/enemy.cpp.o
+
+src/enemy.i: src/enemy.cpp.i
+
+.PHONY : src/enemy.i
+
+# target to preprocess a source file
+src/enemy.cpp.i:
+	$(MAKE) -f CMakeFiles/fighter-plane.dir/build.make CMakeFiles/fighter-plane.dir/src/enemy.cpp.i
+.PHONY : src/enemy.cpp.i
+
+src/enemy.s: src/enemy.cpp.s
+
+.PHONY : src/enemy.s
+
+# target to generate assembly for a file
+src/enemy.cpp.s:
+	$(MAKE) -f CMakeFiles/fighter-plane.dir/build.make CMakeFiles/fighter-plane.dir/src/enemy.cpp.s
+.PHONY : src/enemy.cpp.s
 
 src/fan.o: src/fan.cpp.o
 
@@ -618,6 +672,9 @@ help:
 	@echo "... edit_cache"
 	@echo "... fighter-plane"
 	@echo "... rebuild_cache"
+	@echo "... src/arrow.o"
+	@echo "... src/arrow.i"
+	@echo "... src/arrow.s"
 	@echo "... src/bomb.o"
 	@echo "... src/bomb.i"
 	@echo "... src/bomb.s"
@@ -627,6 +684,9 @@ help:
 	@echo "... src/dashboard.o"
 	@echo "... src/dashboard.i"
 	@echo "... src/dashboard.s"
+	@echo "... src/enemy.o"
+	@echo "... src/enemy.i"
+	@echo "... src/enemy.s"
 	@echo "... src/fan.o"
 	@echo "... src/fan.i"
 	@echo "... src/fan.s"

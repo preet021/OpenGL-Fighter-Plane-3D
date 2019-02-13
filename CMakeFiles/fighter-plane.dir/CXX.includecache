@@ -6,6 +6,18 @@
 
 #IncludeRegexTransform: 
 
+/home/preet/IIIT/2-2/Graphics/Assignments/2/3D-fighter-plane/src/arrow.cpp
+main.h
+/home/preet/IIIT/2-2/Graphics/Assignments/2/3D-fighter-plane/src/main.h
+arrow.h
+/home/preet/IIIT/2-2/Graphics/Assignments/2/3D-fighter-plane/src/arrow.h
+iostream
+-
+
+/home/preet/IIIT/2-2/Graphics/Assignments/2/3D-fighter-plane/src/arrow.h
+main.h
+/home/preet/IIIT/2-2/Graphics/Assignments/2/3D-fighter-plane/src/main.h
+
 /home/preet/IIIT/2-2/Graphics/Assignments/2/3D-fighter-plane/src/bomb.cpp
 main.h
 /home/preet/IIIT/2-2/Graphics/Assignments/2/3D-fighter-plane/src/main.h
@@ -27,6 +39,16 @@ dashboard.h
 /home/preet/IIIT/2-2/Graphics/Assignments/2/3D-fighter-plane/src/dashboard.h
 
 /home/preet/IIIT/2-2/Graphics/Assignments/2/3D-fighter-plane/src/dashboard.h
+main.h
+/home/preet/IIIT/2-2/Graphics/Assignments/2/3D-fighter-plane/src/main.h
+
+/home/preet/IIIT/2-2/Graphics/Assignments/2/3D-fighter-plane/src/enemy.cpp
+main.h
+/home/preet/IIIT/2-2/Graphics/Assignments/2/3D-fighter-plane/src/main.h
+enemy.h
+/home/preet/IIIT/2-2/Graphics/Assignments/2/3D-fighter-plane/src/enemy.h
+
+/home/preet/IIIT/2-2/Graphics/Assignments/2/3D-fighter-plane/src/enemy.h
 main.h
 /home/preet/IIIT/2-2/Graphics/Assignments/2/3D-fighter-plane/src/main.h
 
@@ -131,7 +153,13 @@ bomb.h
 /home/preet/IIIT/2-2/Graphics/Assignments/2/3D-fighter-plane/src/bomb.h
 island.h
 /home/preet/IIIT/2-2/Graphics/Assignments/2/3D-fighter-plane/src/island.h
+enemy.h
+/home/preet/IIIT/2-2/Graphics/Assignments/2/3D-fighter-plane/src/enemy.h
+arrow.h
+/home/preet/IIIT/2-2/Graphics/Assignments/2/3D-fighter-plane/src/arrow.h
 algorithm
+-
+cmath
 -
 list
 -
