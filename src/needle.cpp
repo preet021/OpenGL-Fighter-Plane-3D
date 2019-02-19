@@ -8,7 +8,7 @@ Needle::Needle(float x, float y, float z, color_t c) {
     GLfloat vertex_buffer_data[] = {
         -0.15, 0, 0,
         0.15, 0, 0,
-        0, 3, 0
+        0, 2, 0
     };
     
     this->object = create3DObject(GL_TRIANGLES, 3, vertex_buffer_data, c, GL_FILL);

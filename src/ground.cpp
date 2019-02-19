@@ -19,16 +19,8 @@ Ground::Ground(float x, float y, float z) {
         -INF, -deep, INF
     };
 
-    GLfloat vertex_buffer_color[] = {
-        0.53f, 0.62f, 0.86f,
-        0.53f, 0.62f, 0.86f,
-        0.53f, 0.62f, 0.86f,
-        0.53f, 0.62f, 0.86f,
-        0.53f, 0.62f, 0.86f,
-        0.53f, 0.62f, 0.86f,
-    };
-    
-    this->object = create3DObject(GL_TRIANGLES, 6, vertex_buffer_data, vertex_buffer_color, GL_FILL);
+    color_t c = {32,178,170};
+    this->object = create3DObject(GL_TRIANGLES, 6, vertex_buffer_data, c, GL_FILL);
 }
 
 void Ground::draw(glm::mat4 VP) {

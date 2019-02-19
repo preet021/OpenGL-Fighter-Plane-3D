@@ -23,7 +23,7 @@ Dashboard::Dashboard(float x, float y, float z) {
     for (int i=0; i<18; ++i)
         vertex_buffer_color[i] = 255.0f;
 
-    double theta = 0, phi = M_PI / N_BLCK, ax, bx, cx, dx, ay, by, cy, dy, radius = 3, thickness = 0.3;
+    double theta = 0, phi = M_PI / N_BLCK, ax, bx, cx, dx, ay, by, cy, dy, radius = 2, thickness = 0.3;
 
     for (int i=18; i<18*(1 + N_BLCK); i+=18) {
         ax = (radius + thickness) * cos(theta);
@@ -36,27 +36,27 @@ Dashboard::Dashboard(float x, float y, float z) {
         cy = (radius + thickness) * sin(theta + phi);
         dy = radius * sin(theta + phi);
 
-        vertex_buffer_data[i] = ax + 12;
+        vertex_buffer_data[i] = ax + 8;
         vertex_buffer_data[i + 1] = ay + -4;
         vertex_buffer_data[i + 2] = 0.0f;
 
-        vertex_buffer_data[3 + i]  = bx + 12;
+        vertex_buffer_data[3 + i]  = bx + 8;
         vertex_buffer_data[3 + i + 1] = by + -4;
         vertex_buffer_data[3 + i + 2] = 0.0f;
 
-        vertex_buffer_data[6 + i] = dx + 12;
+        vertex_buffer_data[6 + i] = dx + 8;
         vertex_buffer_data[6 + i + 1] = dy + -4;
         vertex_buffer_data[6 + i + 2] = 0.0f;
 
-        vertex_buffer_data[9 + i] = ax + 12;
+        vertex_buffer_data[9 + i] = ax + 8;
         vertex_buffer_data[9 + i + 1] = ay + -4;
         vertex_buffer_data[9 + i + 2] = 0.0f;
 
-        vertex_buffer_data[9 + 3 + i]  = cx + 12;
+        vertex_buffer_data[9 + 3 + i]  = cx + 8;
         vertex_buffer_data[9 + 3 + i + 1] = cy + -4;
         vertex_buffer_data[9 + 3 + i + 2] = 0.0f;
 
-        vertex_buffer_data[9 + 6 + i] = dx + 12;
+        vertex_buffer_data[9 + 6 + i] = dx + 8;
         vertex_buffer_data[9 + 6 + i + 1] = dy + -4;
         vertex_buffer_data[9 + 6 + i + 2] = 0.0f;
         
@@ -104,27 +104,27 @@ Dashboard::Dashboard(float x, float y, float z) {
         cy = (radius + thickness) * sin(theta + phi);
         dy = radius * sin(theta + phi);
 
-        vertex_buffer_data[i] = ax + 4;
+        vertex_buffer_data[i] = ax + 2.5;
         vertex_buffer_data[i + 1] = ay + -4;
         vertex_buffer_data[i + 2] = 0.0f;
 
-        vertex_buffer_data[3 + i]  = bx + 4;
+        vertex_buffer_data[3 + i]  = bx + 2.5;
         vertex_buffer_data[3 + i + 1] = by + -4;
         vertex_buffer_data[3 + i + 2] = 0.0f;
 
-        vertex_buffer_data[6 + i] = dx + 4;
+        vertex_buffer_data[6 + i] = dx + 2.5;
         vertex_buffer_data[6 + i + 1] = dy + -4;
         vertex_buffer_data[6 + i + 2] = 0.0f;
 
-        vertex_buffer_data[9 + i] = ax + 4;
+        vertex_buffer_data[9 + i] = ax + 2.5;
         vertex_buffer_data[9 + i + 1] = ay + -4;
         vertex_buffer_data[9 + i + 2] = 0.0f;
 
-        vertex_buffer_data[9 + 3 + i]  = cx + 4;
+        vertex_buffer_data[9 + 3 + i]  = cx + 2.5;
         vertex_buffer_data[9 + 3 + i + 1] = cy + -4;
         vertex_buffer_data[9 + 3 + i + 2] = 0.0f;
 
-        vertex_buffer_data[9 + 6 + i] = dx + 4;
+        vertex_buffer_data[9 + 6 + i] = dx + 2.5;
         vertex_buffer_data[9 + 6 + i + 1] = dy + -4;
         vertex_buffer_data[9 + 6 + i + 2] = 0.0f;
         
@@ -170,27 +170,27 @@ Dashboard::Dashboard(float x, float y, float z) {
         cy = (radius + thickness) * sin(theta + phi);
         dy = radius * sin(theta + phi);
 
-        vertex_buffer_data[i] = ax + 20;
+        vertex_buffer_data[i] = ax + 13.5;
         vertex_buffer_data[i + 1] = ay + -4;
         vertex_buffer_data[i + 2] = 0.0f;
 
-        vertex_buffer_data[3 + i]  = bx + 20;
+        vertex_buffer_data[3 + i]  = bx + 13.5;
         vertex_buffer_data[3 + i + 1] = by + -4;
         vertex_buffer_data[3 + i + 2] = 0.0f;
 
-        vertex_buffer_data[6 + i] = dx + 20;
+        vertex_buffer_data[6 + i] = dx + 13.5;
         vertex_buffer_data[6 + i + 1] = dy + -4;
         vertex_buffer_data[6 + i + 2] = 0.0f;
 
-        vertex_buffer_data[9 + i] = ax + 20;
+        vertex_buffer_data[9 + i] = ax + 13.5;
         vertex_buffer_data[9 + i + 1] = ay + -4;
         vertex_buffer_data[9 + i + 2] = 0.0f;
 
-        vertex_buffer_data[9 + 3 + i]  = cx + 20;
+        vertex_buffer_data[9 + 3 + i]  = cx + 13.5;
         vertex_buffer_data[9 + 3 + i + 1] = cy + -4;
         vertex_buffer_data[9 + 3 + i + 2] = 0.0f;
 
-        vertex_buffer_data[9 + 6 + i] = dx + 20;
+        vertex_buffer_data[9 + 6 + i] = dx + 13.5;
         vertex_buffer_data[9 + 6 + i + 1] = dy + -4;
         vertex_buffer_data[9 + 6 + i + 2] = 0.0f;
         

@@ -11,9 +11,9 @@ public:
     glm::vec3 position, rotation;
     void draw(glm::mat4 VP);
     void tick();
-    double radius, flength, rlength, wlength, rwlength, tilt, maxtilt, speed_z, fan_speed, fan_rotation, speed_y, acc_z, fuel, maxfuel, maxalt;
+    double frotation, fspeed, radius, flength, rlength, wlength, rwlength, tilt, maxtilt, speed_z, fan_speed, fan_rotation, speed_y, acc_z, fuel, maxfuel, maxalt;
 private:
-    VAO *object, *ob1;
+    VAO *object, *object1;
 };
 
 #endif // PLANE_H

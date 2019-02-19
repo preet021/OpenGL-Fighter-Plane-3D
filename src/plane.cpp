@@ -18,6 +18,8 @@ Plane::Plane(float x, float y, float z) {
     this->fuel = 10;
     this->maxfuel = 10;
     this->maxalt = 500;
+    this->fspeed = 20;
+    this->frotation = 0;
 
     GLfloat vertex_buffer_data[N_TRNG*27+27+18], vertex_buffer_color[N_TRNG*27+27+18];
 
@@ -230,13 +232,16 @@ Plane::Plane(float x, float y, float z) {
     vertex_buffer_color[N_TRNG*27+44] = 0.0f;
 
     this->object = create3DObject(GL_TRIANGLES, N_TRNG*9+15, vertex_buffer_data, vertex_buffer_color, GL_FILL);
-    // GLfloat vertex_buffer_data1[] = {
-    //     0, 0, -20,
-    //     0, 0, -35,
-    //     -10, 0, -20,
-    // };
-    // color_t c = {255, 0, 0};
-    // this->ob1 = create3DObject(GL_TRIANGLES, 3, vertex_buffer_data1, c, GL_FILL);
+    GLfloat vertex_buffer_data1[] = {
+        0, 10, -flength,
+        1, 0, -flength,
+        -1, 0, -flength,
+        0, -10, -flength,
+        1, 0, -flength,
+        -1, 0, -flength,
+    };
+    color_t c = {0, 0, 0};
+    this->object1 = create3DObject(GL_TRIANGLES, 6, vertex_buffer_data1, c, GL_FILL);
 }
 
 void Plane::draw(glm::mat4 VP) {
@@ -251,7 +256,12 @@ void Plane::draw(glm::mat4 VP) {
     glm::mat4 MVP = VP * Matrices.model;
     glUniformMatrix4fv(Matrices.MatrixID, 1, GL_FALSE, &MVP[0][0]);
     draw3DObject(this->object);
-    //draw3DObject(this->ob1);
+    
+    glm::mat4 rotate1 = glm::rotate((float) (this->frotation * M_PI / 180.0f), glm::vec3(0, 0, 1));
+    Matrices.model *= (rotate1);
+    MVP = VP * Matrices.model;
+    glUniformMatrix4fv(Matrices.MatrixID, 1, GL_FALSE, &MVP[0][0]);
+    draw3DObject(this->object1);
 }
 
 void Plane::tick() {
@@ -259,5 +269,7 @@ void Plane::tick() {
     if (this->speed_z > 1.000)
         this->speed_z -= 0.001;
     this->fuel -= 0.002;
+    this->frotation += fspeed;
+    if (this->frotation > 360)
+        this->frotation -= 360;
 }
-

@@ -555,6 +555,33 @@ src/other_handlers.cpp.s:
 	$(MAKE) -f CMakeFiles/fighter-plane.dir/build.make CMakeFiles/fighter-plane.dir/src/other_handlers.cpp.s
 .PHONY : src/other_handlers.cpp.s
 
+src/parachute.o: src/parachute.cpp.o
+
+.PHONY : src/parachute.o
+
+# target to build an object file
+src/parachute.cpp.o:
+	$(MAKE) -f CMakeFiles/fighter-plane.dir/build.make CMakeFiles/fighter-plane.dir/src/parachute.cpp.o
+.PHONY : src/parachute.cpp.o
+
+src/parachute.i: src/parachute.cpp.i
+
+.PHONY : src/parachute.i
+
+# target to preprocess a source file
+src/parachute.cpp.i:
+	$(MAKE) -f CMakeFiles/fighter-plane.dir/build.make CMakeFiles/fighter-plane.dir/src/parachute.cpp.i
+.PHONY : src/parachute.cpp.i
+
+src/parachute.s: src/parachute.cpp.s
+
+.PHONY : src/parachute.s
+
+# target to generate assembly for a file
+src/parachute.cpp.s:
+	$(MAKE) -f CMakeFiles/fighter-plane.dir/build.make CMakeFiles/fighter-plane.dir/src/parachute.cpp.s
+.PHONY : src/parachute.cpp.s
+
 src/plane.o: src/plane.cpp.o
 
 .PHONY : src/plane.o
@@ -608,6 +635,33 @@ src/ring.s: src/ring.cpp.s
 src/ring.cpp.s:
 	$(MAKE) -f CMakeFiles/fighter-plane.dir/build.make CMakeFiles/fighter-plane.dir/src/ring.cpp.s
 .PHONY : src/ring.cpp.s
+
+src/score.o: src/score.cpp.o
+
+.PHONY : src/score.o
+
+# target to build an object file
+src/score.cpp.o:
+	$(MAKE) -f CMakeFiles/fighter-plane.dir/build.make CMakeFiles/fighter-plane.dir/src/score.cpp.o
+.PHONY : src/score.cpp.o
+
+src/score.i: src/score.cpp.i
+
+.PHONY : src/score.i
+
+# target to preprocess a source file
+src/score.cpp.i:
+	$(MAKE) -f CMakeFiles/fighter-plane.dir/build.make CMakeFiles/fighter-plane.dir/src/score.cpp.i
+.PHONY : src/score.cpp.i
+
+src/score.s: src/score.cpp.s
+
+.PHONY : src/score.s
+
+# target to generate assembly for a file
+src/score.cpp.s:
+	$(MAKE) -f CMakeFiles/fighter-plane.dir/build.make CMakeFiles/fighter-plane.dir/src/score.cpp.s
+.PHONY : src/score.cpp.s
 
 src/timer.o: src/timer.cpp.o
 
@@ -720,12 +774,18 @@ help:
 	@echo "... src/other_handlers.o"
 	@echo "... src/other_handlers.i"
 	@echo "... src/other_handlers.s"
+	@echo "... src/parachute.o"
+	@echo "... src/parachute.i"
+	@echo "... src/parachute.s"
 	@echo "... src/plane.o"
 	@echo "... src/plane.i"
 	@echo "... src/plane.s"
 	@echo "... src/ring.o"
 	@echo "... src/ring.i"
 	@echo "... src/ring.s"
+	@echo "... src/score.o"
+	@echo "... src/score.i"
+	@echo "... src/score.s"
 	@echo "... src/timer.o"
 	@echo "... src/timer.i"
 	@echo "... src/timer.s"

@@ -20,8 +20,10 @@ set(CMAKE_DEPENDS_CHECK_CXX
   "/home/preet/IIIT/2-2/Graphics/Assignments/2/3D-fighter-plane/src/needle.cpp" "/home/preet/IIIT/2-2/Graphics/Assignments/2/3D-fighter-plane/CMakeFiles/fighter-plane.dir/src/needle.cpp.o"
   "/home/preet/IIIT/2-2/Graphics/Assignments/2/3D-fighter-plane/src/nonedit.cpp" "/home/preet/IIIT/2-2/Graphics/Assignments/2/3D-fighter-plane/CMakeFiles/fighter-plane.dir/src/nonedit.cpp.o"
   "/home/preet/IIIT/2-2/Graphics/Assignments/2/3D-fighter-plane/src/other_handlers.cpp" "/home/preet/IIIT/2-2/Graphics/Assignments/2/3D-fighter-plane/CMakeFiles/fighter-plane.dir/src/other_handlers.cpp.o"
+  "/home/preet/IIIT/2-2/Graphics/Assignments/2/3D-fighter-plane/src/parachute.cpp" "/home/preet/IIIT/2-2/Graphics/Assignments/2/3D-fighter-plane/CMakeFiles/fighter-plane.dir/src/parachute.cpp.o"
   "/home/preet/IIIT/2-2/Graphics/Assignments/2/3D-fighter-plane/src/plane.cpp" "/home/preet/IIIT/2-2/Graphics/Assignments/2/3D-fighter-plane/CMakeFiles/fighter-plane.dir/src/plane.cpp.o"
   "/home/preet/IIIT/2-2/Graphics/Assignments/2/3D-fighter-plane/src/ring.cpp" "/home/preet/IIIT/2-2/Graphics/Assignments/2/3D-fighter-plane/CMakeFiles/fighter-plane.dir/src/ring.cpp.o"
+  "/home/preet/IIIT/2-2/Graphics/Assignments/2/3D-fighter-plane/src/score.cpp" "/home/preet/IIIT/2-2/Graphics/Assignments/2/3D-fighter-plane/CMakeFiles/fighter-plane.dir/src/score.cpp.o"
   "/home/preet/IIIT/2-2/Graphics/Assignments/2/3D-fighter-plane/src/timer.cpp" "/home/preet/IIIT/2-2/Graphics/Assignments/2/3D-fighter-plane/CMakeFiles/fighter-plane.dir/src/timer.cpp.o"
   "/home/preet/IIIT/2-2/Graphics/Assignments/2/3D-fighter-plane/src/volcano.cpp" "/home/preet/IIIT/2-2/Graphics/Assignments/2/3D-fighter-plane/CMakeFiles/fighter-plane.dir/src/volcano.cpp.o"
   )

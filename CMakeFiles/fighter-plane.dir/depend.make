@@ -56,8 +56,10 @@ CMakeFiles/fighter-plane.dir/src/main.cpp.o: src/main.cpp
 CMakeFiles/fighter-plane.dir/src/main.cpp.o: src/main.h
 CMakeFiles/fighter-plane.dir/src/main.cpp.o: src/missile.h
 CMakeFiles/fighter-plane.dir/src/main.cpp.o: src/needle.h
+CMakeFiles/fighter-plane.dir/src/main.cpp.o: src/parachute.h
 CMakeFiles/fighter-plane.dir/src/main.cpp.o: src/plane.h
 CMakeFiles/fighter-plane.dir/src/main.cpp.o: src/ring.h
+CMakeFiles/fighter-plane.dir/src/main.cpp.o: src/score.h
 CMakeFiles/fighter-plane.dir/src/main.cpp.o: src/timer.h
 CMakeFiles/fighter-plane.dir/src/main.cpp.o: src/volcano.h
 
@@ -75,6 +77,10 @@ CMakeFiles/fighter-plane.dir/src/nonedit.cpp.o: src/nonedit.cpp
 CMakeFiles/fighter-plane.dir/src/other_handlers.cpp.o: src/main.h
 CMakeFiles/fighter-plane.dir/src/other_handlers.cpp.o: src/other_handlers.cpp
 
+CMakeFiles/fighter-plane.dir/src/parachute.cpp.o: src/main.h
+CMakeFiles/fighter-plane.dir/src/parachute.cpp.o: src/parachute.cpp
+CMakeFiles/fighter-plane.dir/src/parachute.cpp.o: src/parachute.h
+
 CMakeFiles/fighter-plane.dir/src/plane.cpp.o: src/main.h
 CMakeFiles/fighter-plane.dir/src/plane.cpp.o: src/plane.cpp
 CMakeFiles/fighter-plane.dir/src/plane.cpp.o: src/plane.h
@@ -82,6 +88,10 @@ CMakeFiles/fighter-plane.dir/src/plane.cpp.o: src/plane.h
 CMakeFiles/fighter-plane.dir/src/ring.cpp.o: src/main.h
 CMakeFiles/fighter-plane.dir/src/ring.cpp.o: src/ring.cpp
 CMakeFiles/fighter-plane.dir/src/ring.cpp.o: src/ring.h
+
+CMakeFiles/fighter-plane.dir/src/score.cpp.o: src/main.h
+CMakeFiles/fighter-plane.dir/src/score.cpp.o: src/score.cpp
+CMakeFiles/fighter-plane.dir/src/score.cpp.o: src/score.h
 
 CMakeFiles/fighter-plane.dir/src/timer.cpp.o: src/timer.cpp
 CMakeFiles/fighter-plane.dir/src/timer.cpp.o: src/timer.h
