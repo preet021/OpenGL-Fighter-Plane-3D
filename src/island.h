@@ -11,9 +11,10 @@ public:
     float rotation;
     void draw(glm::mat4 VP);
     void tick();
+    bool is_checkpoint;
     double height, side;
 private:
-    VAO *object;
+    VAO *object, *object1;
 };
 
 #endif // ISLAND_H

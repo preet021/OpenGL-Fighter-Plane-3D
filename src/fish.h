@@ -11,10 +11,9 @@ public:
     glm::vec3 position;
     float rotation;
     void draw(glm::mat4 VP);
-    void tick();
     double side;
 private:
-    VAO *object, *ob1;
+    VAO *object;
 };
 
 #endif // FISH_H

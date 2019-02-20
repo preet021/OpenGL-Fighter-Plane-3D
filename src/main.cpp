@@ -68,8 +68,6 @@ Timer t60(1.0 / 60);
 
 static void CursorPositionCallback (GLFWwindow *window, double xPos, double yPos);
 
-/* Render the scene with openGL */
-/* Edit this function according to your assignment */
 void draw() {
     // clear the color and depth in the frame buffer
     glClear (GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
@@ -161,6 +159,7 @@ void tick_input(GLFWwindow *window) {
     int w = glfwGetKey(window, GLFW_KEY_W);
     int m = glfwGetKey(window, GLFW_KEY_M);
     int c = glfwGetKey(window, GLFW_KEY_C);
+    int x = glfwGetKey(window, GLFW_KEY_X);
     int mouse_left = glfwGetMouseButton(window, GLFW_MOUSE_BUTTON_LEFT);
     int mouse_right = glfwGetMouseButton(window, GLFW_MOUSE_BUTTON_RIGHT);
     float enemy_plane_dist = dist(plane.position.x, plane.position.y, plane.position.z, checkpoint->position.x, checkpoint->position.y, checkpoint->position.z);
@@ -211,6 +210,10 @@ void tick_input(GLFWwindow *window) {
 
     if (c) {
         plane.rotation.x += 3*plane.tilt;
+    }
+
+    if (x) {
+        plane.rotation.x -= 3*plane.tilt;
     }
 
     if (d) {
@@ -377,6 +380,8 @@ void tick_elements() {
     needle[0].rotation = max(90 * (2 - plane.speed_z), (double)-90); // speed
     needle[1].rotation = max(90 - (plane.position.y/plane.maxalt)*180, (double)-90); //altitude
     needle[2].rotation = min(90 - (plane.fuel/plane.maxfuel)*180, (double)90); //fuel
+
+    checkpoint->tick();
 }
 
 /* Initialize the OpenGL rendering properties */
@@ -424,6 +429,7 @@ void initGL(GLFWwindow *window, int width, int height) {
         *it = Island(-5000 + rand() % 5000, 12, -(rand() % 5000));
     }
     checkpoint = islands.begin();
+    checkpoint->is_checkpoint = true;
 
     arrow = Arrow(0, 8, 0, 0);
 
@@ -567,7 +573,10 @@ void detect_collisions() {
             // cout << cnt << " bomb hits island" << endl; ++cnt;
             islands.erase(islands.begin());
             rem_checkpoints -= 1;
-            if (rem_checkpoints > 0) checkpoint = islands.begin();
+            if (rem_checkpoints > 0) {
+                checkpoint = islands.begin();
+                checkpoint->is_checkpoint = true;
+            }
             break;
         }
     }
@@ -592,7 +601,10 @@ void detect_collisions() {
             // cout << cnt << " missile hits island" << endl; ++cnt;
             islands.erase(islands.begin());
             rem_checkpoints -= 1;
-            if (rem_checkpoints > 0) checkpoint = islands.begin();
+            if (rem_checkpoints > 0) {
+                checkpoint = islands.begin();
+                checkpoint->is_checkpoint = true;
+            }
             break;
         }
     }
@@ -708,7 +720,6 @@ void scroll_callback(GLFWwindow *window, double xoffset, double yoffset) {
 
 void display_score () {
     scr.clear();
-    player_score = 8888;
     for (int i=0, dgt, p=10; i<4; p*=10, ++i) {
         dgt = (10 * (player_score % p)) / p;
         if (dgt == 0 || dgt == 4 || dgt == 5 || dgt == 6 || dgt == 8 || dgt == 9) {
