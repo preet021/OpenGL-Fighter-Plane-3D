@@ -53,7 +53,7 @@ list <Volcano> volc;
 vector <Score> scr;
 Score segment;
 
-float screen_zoom = 1, screen_center_x = 0, screen_center_y = 0;
+float screen_zoom = 1, screen_center_x = 0, screen_center_y = 0, near_pt = 0.1, far_pt = INF;
 float camera_rotation_angle = 0, ea, eb, ec, ta, tb, tc, ua, ub, uc, curX = 0, curY = 0, heli_cam_view_radius = 100, heli_cam_view_elevation = 0, heli_cam_view_rotation = 0;
 bool plane_view = 0, follow_cam_view = 1, top_view = 0, heli_cam_view = 0, tower_view = 0, heli_cam_init;
 int cnt = 0, missile_tick = 0, bomb_tick = 0, emissile_tick = 0, rem_checkpoints = 5, no_of_lives = 20, player_score = 0;
@@ -160,7 +160,7 @@ void tick_input(GLFWwindow *window) {
     int e = glfwGetKey(window, GLFW_KEY_E);
     int w = glfwGetKey(window, GLFW_KEY_W);
     int m = glfwGetKey(window, GLFW_KEY_M);
-    int l = glfwGetKey(window, GLFW_KEY_L);
+    int c = glfwGetKey(window, GLFW_KEY_C);
     int mouse_left = glfwGetMouseButton(window, GLFW_MOUSE_BUTTON_LEFT);
     int mouse_right = glfwGetMouseButton(window, GLFW_MOUSE_BUTTON_RIGHT);
     float enemy_plane_dist = dist(plane.position.x, plane.position.y, plane.position.z, checkpoint->position.x, checkpoint->position.y, checkpoint->position.z);
@@ -209,8 +209,8 @@ void tick_input(GLFWwindow *window) {
         heli_cam_view = 1;
     }
 
-    if (l) {
-        plane.rotation.x += plane.tilt;
+    if (c) {
+        plane.rotation.x += 3*plane.tilt;
     }
 
     if (d) {
@@ -241,9 +241,10 @@ void tick_input(GLFWwindow *window) {
 
     if (w) {
         plane.speed_z += plane.acc_z;
-        if (plane.speed_z > 3) plane.speed_z = 3;
-        plane.position.z -= plane.speed_z * cos(plane.rotation.y * M_PI / 180.0);
-        plane.position.x -= plane.speed_z * sin(plane.rotation.y * M_PI / 180.0);
+        if (plane.speed_z > 3.5) plane.speed_z = 3;
+        plane.position.y += plane.speed_z * sin(plane.rotation.x * M_PI / 180.0);
+        plane.position.z -= plane.speed_z * cos(plane.rotation.y * M_PI / 180.0) * cos(plane.rotation.x * M_PI / 180.0);
+        plane.position.x -= plane.speed_z * sin(plane.rotation.y * M_PI / 180.0) * cos(plane.rotation.x * M_PI / 180.0);
     }
 
     if (space) {
@@ -312,6 +313,7 @@ void tick_elements() {
     if (plane.position.y < ground.position.y) no_of_lives = 0;
 
     plane.tick();
+    if (plane.fuel <= 0) no_of_lives = 0;
 
     fan.position.x = plane.position.x - plane.flength * sin(plane.rotation.y * M_PI/180.0);
     fan.position.y = plane.position.y;
@@ -462,6 +464,7 @@ int main(int argc, char **argv) {
 
     window = initGLFW(width, height);
     glfwSetCursorPosCallback(window, CursorPositionCallback);
+    glfwSetScrollCallback(window, scroll_callback);
 
     initGL (window, width, height);
 
@@ -658,7 +661,7 @@ void reset_screen() {
     float bottom = screen_center_y - 40 / screen_zoom;
     float left   = screen_center_x - 40 / screen_zoom;
     float right  = screen_center_x + 40 / screen_zoom;
-    Matrices.projection = glm::perspective(100*M_PI/180, (double)1 , (double)0.1, (double)INF);
+    Matrices.projection = glm::perspective(100*M_PI/180, (double)1 , (double)near_pt, (double)far_pt);
 }
 
 float sq (float x) {
@@ -688,8 +691,24 @@ static void CursorPositionCallback (GLFWwindow *window, double xPos, double yPos
     glfwSetCursorPos(window, 512, 384);
 }
 
+void scroll_callback(GLFWwindow *window, double xoffset, double yoffset) {
+    if (yoffset == 1 && heli_cam_view && heli_cam_view_radius > 20)
+        heli_cam_view_radius -= 2;
+    if (yoffset == -1 && heli_cam_view && heli_cam_view_radius<300) {
+        heli_cam_view_radius += 2;
+    }
+    if (yoffset == 1) {
+        screen_zoom += 1;
+    }
+    if (yoffset == -1) {
+        screen_zoom -= 1;
+    }
+}
+
+
 void display_score () {
     scr.clear();
+    player_score = 8888;
     for (int i=0, dgt, p=10; i<4; p*=10, ++i) {
         dgt = (10 * (player_score % p)) / p;
         if (dgt == 0 || dgt == 4 || dgt == 5 || dgt == 6 || dgt == 8 || dgt == 9) {
